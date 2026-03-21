@@ -40,7 +40,7 @@ const roles = [
 
 export default function PreviousWork() {
   return (
-    <section className="px-8 py-24 sm:py-32 md:px-12">
+    <section className="bg-surface px-8 py-16 sm:py-20 md:px-12">
       <div className="mx-auto max-w-6xl">
         <motion.p
           className="text-sm font-medium uppercase tracking-widest text-muted"
@@ -69,7 +69,7 @@ export default function PreviousWork() {
                 {role.title}
               </h3>
               <p className="text-sm text-muted">{role.company}</p>
-              <p className="mt-4 max-w-2xl leading-relaxed text-muted">
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-foreground/70">
                 {role.description}
               </p>
             </motion.div>

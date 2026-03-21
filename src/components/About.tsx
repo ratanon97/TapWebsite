@@ -9,7 +9,7 @@ const fadeUp = {
 
 export default function About() {
   return (
-    <section id="about" className="px-8 py-24 sm:py-32 md:px-12">
+    <section id="about" className="px-8 py-16 sm:py-20 md:px-12">
       <div className="mx-auto max-w-6xl">
         <motion.p
           className="text-sm font-medium uppercase tracking-widest text-muted"

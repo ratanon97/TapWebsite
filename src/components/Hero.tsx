@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen flex-col justify-center px-8 pt-20 md:px-12">
+    <section className="flex min-h-screen flex-col justify-center px-8 pb-24 pt-20 md:px-12">
       <div className="mx-auto max-w-6xl">
         <motion.h1
           className="max-w-4xl text-5xl leading-[1.4] tracking-tight sm:text-6xl md:text-[4rem]"
@@ -12,7 +12,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <span className="font-[family-name:var(--font-playfair)]">Hi I&apos;m Tap , I build</span>
+          <span className="font-[family-name:var(--font-playfair)]">Hi I&apos;m Tap, I build</span>
           <br />
           <span className="bg-highlight px-1 font-[family-name:var(--font-playfair)]">digital products</span>
           <br />
