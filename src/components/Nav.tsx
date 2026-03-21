@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Nav() {
   const [hidden, setHidden] = useState(false);
@@ -44,12 +45,15 @@ export default function Nav() {
           Tap.
         </a>
 
-        <a
-          href="#contact"
-          className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-warm"
-        >
-          Get in touch
-        </a>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <a
+            href="#contact"
+            className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-colors hover:bg-accent-warm"
+          >
+            Get in touch
+          </a>
+        </div>
       </div>
     </nav>
   );

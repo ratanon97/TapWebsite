@@ -1,16 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
+import CountUp from "./CountUp";
 
 const slideIn = {
   hidden: { opacity: 0, x: -20 },
   visible: { opacity: 1, x: 0 },
 };
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
+const fadeInRight = {
+  hidden: { opacity: 0, x: 30 },
+  visible: { opacity: 1, x: 0 },
 };
+
+const stats = [
+  { end: 6, suffix: "+", label: "Years Experience" },
+  { end: 15, suffix: "+", label: "Projects Delivered" },
+  { end: 3, suffix: "", label: "Industries" },
+];
 
 export default function About() {
   return (
@@ -27,10 +34,17 @@ export default function About() {
           <span className="text-accent-warm">03</span> / About
         </motion.p>
 
-        <div className="mt-8 max-w-2xl space-y-6 border-l-2 border-accent-warm/30 pl-8">
+        {/* Stats row */}
+        <div className="mt-10 grid grid-cols-3 gap-8 border-b border-foreground/10 pb-10 dark:border-foreground/5">
+          {stats.map((stat) => (
+            <CountUp key={stat.label} {...stat} />
+          ))}
+        </div>
+
+        <div className="mt-10 max-w-2xl space-y-6 border-l-2 border-accent-warm/30 pl-8">
           <motion.p
             className="text-lg leading-relaxed text-muted"
-            variants={fadeUp}
+            variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -44,7 +58,7 @@ export default function About() {
           </motion.p>
           <motion.p
             className="text-lg leading-relaxed text-muted"
-            variants={fadeUp}
+            variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -57,14 +71,17 @@ export default function About() {
           </motion.p>
           <motion.p
             className="text-lg leading-relaxed text-muted"
-            variants={fadeUp}
+            variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            I&apos;m always open to interesting conversations about product,
-            technology, and the future of how we work.
+            I&apos;m always open to interesting conversations about{" "}
+            <span className="font-[family-name:var(--font-playfair)] italic text-foreground/80">
+              product, technology, and the future of how we work
+            </span>
+            .
           </motion.p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import MagneticButton from "./MagneticButton";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -83,38 +84,46 @@ export default function Contact() {
 
           <div className="mt-10 flex flex-wrap gap-4">
             {links.map((link, i) => (
-              <motion.a
+              <motion.div
                 key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium text-accent transition-all hover:scale-105 hover:border-accent-hover hover:bg-accent-hover hover:text-white"
                 variants={buttonPop}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.3, delay: 0.3 + i * 0.05 }}
               >
-                <link.icon />
-                {link.label}
-                <svg className="h-3 w-3 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 17L17 7"/>
-                  <path d="M7 7h10v10"/>
-                </svg>
-              </motion.a>
+                <MagneticButton
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium text-accent transition-all hover:scale-105 hover:border-accent-hover hover:bg-accent-hover hover:text-white dark:border-foreground/15"
+                  strength={0.25}
+                >
+                  <link.icon />
+                  {link.label}
+                  <svg className="h-3 w-3 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7"/>
+                    <path d="M7 7h10v10"/>
+                  </svg>
+                </MagneticButton>
+              </motion.div>
             ))}
-            <motion.a
-              href="/resume.pdf"
-              className="inline-flex items-center gap-2 rounded-full bg-accent-warm px-6 py-3 text-sm font-medium text-white transition-all hover:scale-105 hover:opacity-90"
+            <motion.div
               variants={buttonPop}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.3, delay: 0.45 }}
             >
-              <DownloadIcon />
-              Download CV
-            </motion.a>
+              <MagneticButton
+                href="/resume.pdf"
+                className="inline-flex items-center gap-2 rounded-full bg-accent-warm px-6 py-3 text-sm font-medium text-white transition-all hover:scale-105 hover:opacity-90"
+                strength={0.25}
+              >
+                <DownloadIcon />
+                Download CV
+              </MagneticButton>
+            </motion.div>
           </div>
         </motion.div>
       </div>

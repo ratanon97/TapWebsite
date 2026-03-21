@@ -2,11 +2,6 @@
 
 import { motion } from "framer-motion";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
-
 const slideIn = {
   hidden: { opacity: 0, x: -20 },
   visible: { opacity: 1, x: 0 },
@@ -16,9 +11,11 @@ const roles = [
   {
     title: "Digital Project Manager",
     company: "Indorama Ventures PCL",
-    period: "June 2020 \u2014 March 2025",
+    period: "June 2020 — March 2025",
     description:
       "Managed the data integration of Workday\u2019s Adaptive Planning module. Contributed to solution design and data modeling for procurement analytics. Initiated the COMA App for customer and product profitability data. Developed user-centric Tableau dashboards and managed vendor partnerships for supply chain analytics software.",
+    size: "large" as const,
+    tags: ["Workday", "Tableau", "Data Modeling", "Vendor Management"],
   },
   {
     title: "Summer Analyst",
@@ -26,6 +23,8 @@ const roles = [
     period: "September 2018",
     description:
       "Worked with the Investment Advisory team in data research for advising investment strategies to clients.",
+    size: "small" as const,
+    tags: ["Investment Research", "Data Analysis"],
   },
   {
     title: "Summer Marketing Analyst",
@@ -33,19 +32,28 @@ const roles = [
     period: "August 2018",
     description:
       "Analysed a competing country\u2019s export data to identify its target countries and presented findings to the team leader.",
+    size: "small" as const,
+    tags: ["Market Analysis", "Export Data"],
   },
   {
     title: "Summer Analyst",
     company: "Thai Oil Public Company Limited",
-    period: "August 2017 \u2014 September 2017",
+    period: "August 2017 — September 2017",
     description:
       "Evaluated crude oil prices and product values to optimize procurement decisions.",
+    size: "small" as const,
+    tags: ["Procurement", "Price Analysis"],
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
+  visible: { opacity: 1, y: 0, scale: 1 },
+};
+
 export default function PreviousWork() {
   return (
-    <section className="bg-surface px-8 py-16 sm:py-20 md:px-12">
+    <section className="bg-surface px-8 py-16 sm:py-20 md:px-12 dark:bg-foreground/[0.03]">
       <div className="mx-auto max-w-6xl">
         <motion.p
           className="text-sm font-medium uppercase tracking-widest text-muted"
@@ -58,25 +66,66 @@ export default function PreviousWork() {
           <span className="text-accent-warm">02</span> / Previously
         </motion.p>
 
-        <div className="mt-10 space-y-12">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {roles.map((role, i) => (
             <motion.div
               key={role.title + role.company}
-              className="group border-l-2 border-black/10 pl-8 transition-colors hover:border-accent-warm"
-              variants={fadeUp}
+              className={`group relative overflow-hidden rounded-2xl border border-foreground/[0.06] bg-card p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:border-accent-warm/20 dark:bg-card/80 dark:border-foreground/10 dark:hover:border-accent-warm/30 ${
+                role.size === "large"
+                  ? "sm:col-span-2 lg:col-span-2 lg:row-span-2"
+                  : ""
+              }`}
+              variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{
+                duration: 0.5,
+                delay: i * 0.1,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
             >
-              <p className="text-sm text-muted">{role.period}</p>
-              <h3 className="mt-1 text-2xl font-[family-name:var(--font-playfair)] tracking-tight">
-                {role.title}
-              </h3>
-              <p className="text-sm text-muted">{role.company}</p>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-foreground/70">
-                {role.description}
-              </p>
+              {/* Accent line */}
+              <div className="absolute left-0 top-0 h-full w-1 bg-accent-warm/0 transition-all duration-300 group-hover:bg-accent-warm" />
+
+              <div className="flex h-full flex-col">
+                <p className="text-xs font-medium uppercase tracking-wider text-accent-warm/80">
+                  {role.period}
+                </p>
+                <h3
+                  className={`mt-3 font-[family-name:var(--font-playfair)] tracking-tight ${
+                    role.size === "large"
+                      ? "text-2xl sm:text-3xl"
+                      : "text-xl sm:text-2xl"
+                  }`}
+                >
+                  {role.title}
+                </h3>
+                <p className="mt-1 text-sm text-muted">{role.company}</p>
+                <p
+                  className={`mt-4 leading-relaxed text-foreground/60 ${
+                    role.size === "large"
+                      ? "text-base max-w-xl"
+                      : "text-sm"
+                  }`}
+                >
+                  {role.description}
+                </p>
+
+                {/* Tags revealed on hover */}
+                <div className="mt-auto pt-4">
+                  <div className="flex flex-wrap gap-2 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    {role.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-accent-warm/10 px-3 py-1 text-xs font-medium text-accent-warm dark:bg-accent-warm/15"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

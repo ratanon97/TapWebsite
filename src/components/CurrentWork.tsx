@@ -2,19 +2,24 @@
 
 import { motion } from "framer-motion";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
-
 const slideIn = {
   hidden: { opacity: 0, x: -20 },
   visible: { opacity: 1, x: 0 },
 };
 
+const slideInContent = {
+  hidden: { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0 },
+};
+
+const staggerUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function CurrentWork() {
   return (
-    <section id="work" className="px-8 py-16 sm:py-20 md:px-12">
+    <section id="work" className="px-8 py-16 sm:py-20 md:px-12 border-t border-foreground/5">
       <div className="mx-auto max-w-6xl">
         <motion.p
           className="text-sm font-medium uppercase tracking-widest text-muted"
@@ -29,11 +34,11 @@ export default function CurrentWork() {
 
         <motion.div
           className="mt-8"
-          variants={fadeUp}
+          variants={slideInContent}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <h2 className="text-4xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-5xl">
             Project Manager at Omise
@@ -45,11 +50,25 @@ export default function CurrentWork() {
             stakeholder alignment across product, engineering, clients and
             external partners.
           </p>
-          <ul className="mt-8 max-w-2xl list-disc space-y-3 pl-5 text-sm leading-relaxed text-muted marker:text-accent-warm">
-            <li>Led multi-partner digital wallet program serving 250K+ users and generating ~$420K in projected 3-year revenue, managing parallel integrations of open-loop wallet solutions with regulatory compliance</li>
-            <li>Delivered the Report Engine project plan, scoping $300K annual opportunity to enhance merchant reporting capabilities</li>
-            <li>Coordinated CYBS REST API rollout for Thai banks, enabling major client migration to Cybersource that drove ~$150K/month in savings</li>
-            <li>Established structured Agile cadences, streamlined documentation and reporting processes</li>
+          <ul className="mt-8 max-w-2xl space-y-3 pl-5 text-sm leading-relaxed text-muted">
+            {[
+              "Led multi-partner digital wallet program serving 250K+ users and generating ~$420K in projected 3-year revenue, managing parallel integrations of open-loop wallet solutions with regulatory compliance",
+              "Delivered the Report Engine project plan, scoping $300K annual opportunity to enhance merchant reporting capabilities",
+              "Coordinated CYBS REST API rollout for Thai banks, enabling major client migration to Cybersource that drove ~$150K/month in savings",
+              "Established structured Agile cadences, streamlined documentation and reporting processes",
+            ].map((item, i) => (
+              <motion.li
+                key={i}
+                className="list-disc marker:text-accent-warm"
+                variants={staggerUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.4, delay: 0.3 + i * 0.08 }}
+              >
+                {item}
+              </motion.li>
+            ))}
           </ul>
         </motion.div>
       </div>
