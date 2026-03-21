@@ -46,7 +46,7 @@ export default function Nav() {
 
         <a
           href="#contact"
-          className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-80"
+          className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-warm"
         >
           Get in touch
         </a>

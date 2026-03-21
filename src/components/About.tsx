@@ -53,7 +53,7 @@ export default function About() {
             I care deeply about bridging the gap between business needs and
             technical execution. Whether it&apos;s integrating enterprise platforms
             like Workday, building fintech payment solutions, or designing
-            analytics dashboards &mdash; I thrive on turning complexity into clarity.
+            analytics dashboards &mdash; I focus on making the complex feel simple.
           </motion.p>
           <motion.p
             className="text-lg leading-relaxed text-muted"

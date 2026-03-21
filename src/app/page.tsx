@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import CurrentWork from "@/components/CurrentWork";
 import PreviousWork from "@/components/PreviousWork";
 import About from "@/components/About";
+import Tools from "@/components/Tools";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import MotionProvider from "@/components/MotionProvider";
@@ -18,6 +19,7 @@ export default function Home() {
         <CurrentWork />
         <PreviousWork />
         <About />
+        <Tools />
         <Contact />
       </main>
       <Footer />

@@ -12,10 +12,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <span className="font-[family-name:var(--font-playfair)]">Hi I&apos;m Tap, I build</span>
+          <span className="font-[family-name:var(--font-playfair)] font-normal">Hi I&apos;m Tap, I build</span>
           <br />
           <motion.span
-            className="px-1 font-[family-name:var(--font-playfair)]"
+            className="px-1 font-[family-name:var(--font-playfair)] font-bold"
             initial={{ backgroundSize: "0% 100%" }}
             animate={{ backgroundSize: "100% 100%" }}
             transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
@@ -26,10 +26,10 @@ export default function Hero() {
             }}
           >digital products</motion.span>
           <br />
-          <span className="font-[family-name:var(--font-playfair)]">that turn </span>
-          <span className="font-[family-name:var(--font-playfair)] italic">complexity </span>
-          <span className="font-[family-name:var(--font-playfair)]">into </span>
-          <span className="font-[family-name:var(--font-playfair)] italic">clarity</span>
+          <span className="font-[family-name:var(--font-playfair)] font-normal">that turn </span>
+          <span className="font-[family-name:var(--font-playfair)] font-bold italic">complexity </span>
+          <span className="font-[family-name:var(--font-playfair)] font-normal">into </span>
+          <span className="font-[family-name:var(--font-playfair)] font-bold italic">clarity</span>
           <span className="font-[family-name:var(--font-playfair)]">.</span>
         </motion.h1>
 
@@ -41,7 +41,7 @@ export default function Hero() {
         >
           I&apos;m a Product Manager who loves turning complex problems into
           simple, delightful experiences. I care deeply about &ldquo;why&rdquo;
-          behind what we build
+          behind what we build.
         </motion.p>
 
         <motion.div
@@ -52,7 +52,7 @@ export default function Hero() {
         >
           <a
             href="#work"
-            className="inline-block rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium text-accent transition-colors hover:border-accent-hover hover:bg-accent-hover hover:text-white"
+            className="inline-block rounded-full bg-accent-warm px-8 py-4 text-base font-medium text-white transition-all hover:scale-105 hover:opacity-90"
           >
             See my work
           </a>

@@ -52,7 +52,7 @@ const links = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="bg-surface px-8 py-16 sm:py-20 md:px-12">
+    <section id="contact" className="px-8 py-16 sm:py-20 md:px-12">
       <div className="mx-auto max-w-6xl">
         <motion.p
           className="text-sm font-medium uppercase tracking-widest text-muted"
@@ -62,7 +62,7 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-accent-warm">04</span> / Get in touch
+          <span className="text-accent-warm">05</span> / Get in touch
         </motion.p>
 
         <motion.div
@@ -73,7 +73,7 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h2 className="text-3xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-4xl">
+          <h2 className="text-4xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-5xl">
             Let&apos;s connect.
           </h2>
           <p className="mt-4 max-w-xl leading-relaxed text-muted">
@@ -97,6 +97,10 @@ export default function Contact() {
               >
                 <link.icon />
                 {link.label}
+                <svg className="h-3 w-3 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17L17 7"/>
+                  <path d="M7 7h10v10"/>
+                </svg>
               </motion.a>
             ))}
             <motion.a
