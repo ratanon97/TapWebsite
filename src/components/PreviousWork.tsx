@@ -50,7 +50,7 @@ export default function PreviousWork() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          Previously
+          <span className="text-accent-hover">02</span> / Previously
         </motion.p>
 
         <div className="mt-10 space-y-12">

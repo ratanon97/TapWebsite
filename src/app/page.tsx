@@ -5,10 +5,11 @@ import PreviousWork from "@/components/PreviousWork";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import MotionProvider from "@/components/MotionProvider";
 
 export default function Home() {
   return (
-    <>
+    <MotionProvider>
       <Nav />
       <main>
         <Hero />
@@ -18,6 +19,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </MotionProvider>
   );
 }

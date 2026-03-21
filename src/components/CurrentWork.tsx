@@ -19,7 +19,7 @@ export default function CurrentWork() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          Currently
+          <span className="text-accent-hover">01</span> / Currently
         </motion.p>
 
         <motion.div

@@ -19,11 +19,11 @@ export default function About() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          About
+          <span className="text-accent-hover">03</span> / About
         </motion.p>
 
         <motion.div
-          className="mt-8 max-w-2xl space-y-6"
+          className="mt-8 max-w-2xl space-y-6 border-l-2 border-accent-hover/30 pl-8"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"

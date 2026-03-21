@@ -52,7 +52,7 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          Get in touch
+          <span className="text-accent-hover">04</span> / Get in touch
         </motion.p>
 
         <motion.div
@@ -78,7 +78,7 @@ export default function Contact() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium text-accent transition-colors hover:border-foreground hover:bg-foreground hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium text-accent transition-colors hover:border-accent-hover hover:bg-accent-hover hover:text-white"
               >
                 <link.icon />
                 {link.label}

@@ -42,7 +42,7 @@ export default function Hero() {
         >
           <a
             href="#work"
-            className="inline-block rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium text-accent transition-colors hover:border-foreground hover:bg-foreground hover:text-white"
+            className="inline-block rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium text-accent transition-colors hover:border-accent-hover hover:bg-accent-hover hover:text-white"
           >
             See my work
           </a>
