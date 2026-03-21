@@ -45,7 +45,7 @@ export default function CurrentWork() {
             stakeholder alignment across product, engineering, clients and
             external partners.
           </p>
-          <ul className="mt-6 max-w-2xl space-y-3 text-sm leading-relaxed text-muted">
+          <ul className="mt-6 max-w-2xl list-disc space-y-3 pl-5 text-sm leading-relaxed text-muted marker:text-accent-warm">
             <li>Led multi-partner digital wallet program serving 250K+ users and generating ~$420K in projected 3-year revenue, managing parallel integrations of open-loop wallet solutions with regulatory compliance</li>
             <li>Delivered the Report Engine project plan, scoping $300K annual opportunity to enhance merchant reporting capabilities</li>
             <li>Coordinated CYBS REST API rollout for Thai banks, enabling major client migration to Cybersource that drove ~$150K/month in savings</li>
