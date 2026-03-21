@@ -14,7 +14,17 @@ export default function Hero() {
         >
           <span className="font-[family-name:var(--font-playfair)]">Hi I&apos;m Tap, I build</span>
           <br />
-          <span className="bg-highlight px-1 font-[family-name:var(--font-playfair)]">digital products</span>
+          <motion.span
+            className="px-1 font-[family-name:var(--font-playfair)]"
+            initial={{ backgroundSize: "0% 100%" }}
+            animate={{ backgroundSize: "100% 100%" }}
+            transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+            style={{
+              backgroundImage: "linear-gradient(#bfdbfe, #bfdbfe)",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "left",
+            }}
+          >digital products</motion.span>
           <br />
           <span className="font-[family-name:var(--font-playfair)]">that turn </span>
           <span className="font-[family-name:var(--font-playfair)] italic">complexity </span>

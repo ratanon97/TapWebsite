@@ -6,10 +6,12 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import MotionProvider from "@/components/MotionProvider";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
     <MotionProvider>
+      <ScrollProgress />
       <Nav />
       <main>
         <Hero />

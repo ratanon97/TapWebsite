@@ -7,19 +7,24 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
+const slideIn = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0 },
+};
+
 export default function CurrentWork() {
   return (
     <section id="work" className="px-8 py-16 sm:py-20 md:px-12">
       <div className="mx-auto max-w-6xl">
         <motion.p
           className="text-sm font-medium uppercase tracking-widest text-muted"
-          variants={fadeUp}
+          variants={slideIn}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-accent-hover">01</span> / Currently
+          <span className="text-accent-warm">01</span> / Currently
         </motion.p>
 
         <motion.div
