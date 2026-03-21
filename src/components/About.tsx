@@ -24,26 +24,26 @@ export default function About() {
     <section id="about" className="px-8 py-16 sm:py-20 md:px-12">
       <div className="mx-auto max-w-6xl">
         <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-muted"
+          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
           variants={slideIn}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-accent-warm">03</span> / About
+          <span className="text-[var(--color-accent-warm)]">03</span> / About
         </motion.p>
 
         {/* Stats row */}
-        <div className="mt-10 grid grid-cols-3 gap-8 border-b border-foreground/10 pb-10 dark:border-foreground/5">
+        <div className="mt-10 grid grid-cols-3 gap-8 border-b border-[var(--color-border)] pb-10">
           {stats.map((stat) => (
             <CountUp key={stat.label} {...stat} />
           ))}
         </div>
 
-        <div className="mt-10 max-w-2xl space-y-6 border-l-2 border-accent-warm/30 pl-8">
+        <div className="mt-10 max-w-2xl space-y-6 border-l-2 border-[var(--color-accent-warm)] pl-8">
           <motion.p
-            className="text-lg leading-relaxed text-muted"
+            className="text-lg leading-relaxed text-[var(--color-muted)]"
             variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
@@ -57,7 +57,7 @@ export default function About() {
             and chemicals industries.
           </motion.p>
           <motion.p
-            className="text-lg leading-relaxed text-muted"
+            className="text-lg leading-relaxed text-[var(--color-muted)]"
             variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
@@ -70,7 +70,7 @@ export default function About() {
             analytics dashboards &mdash; I focus on making the complex feel simple.
           </motion.p>
           <motion.p
-            className="text-lg leading-relaxed text-muted"
+            className="text-lg leading-relaxed text-[var(--color-muted)]"
             variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
@@ -78,7 +78,7 @@ export default function About() {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             I&apos;m always open to interesting conversations about{" "}
-            <span className="font-[family-name:var(--font-playfair)] italic text-foreground/80">
+            <span className="font-[family-name:var(--font-playfair)] italic text-[var(--color-fg)]">
               product, technology, and the future of how we work
             </span>
             .

@@ -30,18 +30,18 @@ export default function Hero() {
     >
       {/* Floating decorative elements */}
       <motion.div
-        className="pointer-events-none absolute right-[10%] top-[15%] h-64 w-64 rounded-full bg-accent-warm/[0.04] blur-3xl"
-        style={{ y: float1Y, x: float1X }}
+        className="pointer-events-none absolute right-[10%] top-[15%] h-64 w-64 rounded-full blur-3xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 6%, transparent)', y: float1Y, x: float1X }}
         aria-hidden
       />
       <motion.div
-        className="pointer-events-none absolute left-[5%] bottom-[20%] h-48 w-48 rounded-full bg-accent-hover/[0.05] blur-3xl"
-        style={{ y: float2Y }}
+        className="pointer-events-none absolute left-[5%] bottom-[20%] h-48 w-48 rounded-full blur-3xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-hover) 6%, transparent)', y: float2Y }}
         aria-hidden
       />
       <motion.div
-        className="pointer-events-none absolute right-[20%] bottom-[10%] h-32 w-32 rounded-full bg-accent-warm/[0.06] blur-2xl"
-        style={{ y: float3Y }}
+        className="pointer-events-none absolute right-[20%] bottom-[10%] h-32 w-32 rounded-full blur-2xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 8%, transparent)', y: float3Y }}
         aria-hidden
       />
 
@@ -75,7 +75,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          className="mt-8 max-w-xl text-base leading-relaxed text-muted"
+          className="mt-8 max-w-xl text-base leading-relaxed text-[var(--color-muted)]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
@@ -95,7 +95,7 @@ export default function Hero() {
         >
           <MagneticButton
             href="#work"
-            className="inline-block rounded-full bg-accent-warm px-8 py-4 text-base font-medium text-white transition-all hover:scale-105 hover:opacity-90"
+            className="inline-block rounded-full bg-[var(--color-accent-warm)] px-8 py-4 text-base font-medium text-white transition-all hover:scale-105 hover:opacity-90"
             strength={0.35}
           >
             See my work

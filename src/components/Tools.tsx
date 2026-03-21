@@ -29,24 +29,24 @@ const tools = [
 
 export default function Tools() {
   return (
-    <section className="bg-surface px-8 py-16 sm:py-20 md:px-12 dark:bg-foreground/[0.03]">
+    <section className="bg-[var(--color-surface)] px-8 py-16 sm:py-20 md:px-12">
       <div className="mx-auto max-w-6xl">
         <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-muted"
+          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
           variants={slideIn}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-accent-warm">04</span> / Tools &amp; Methods
+          <span className="text-[var(--color-accent-warm)]">04</span> / Tools &amp; Methods
         </motion.p>
 
         <div className="mt-8 flex flex-wrap gap-3">
           {tools.map((tool, i) => (
             <motion.span
               key={tool.name}
-              className="group relative cursor-default rounded-full border border-foreground/15 px-4 py-2 font-[family-name:var(--font-mono)] text-xs tracking-wide text-foreground/70 transition-all duration-200 hover:scale-[1.05] hover:rotate-[0.5deg] hover:border-accent-warm hover:text-accent-warm hover:shadow-sm"
+              className="group relative cursor-default rounded-full border border-[var(--color-border)] px-4 py-2 font-[family-name:var(--font-mono)] text-xs tracking-wide text-[var(--color-muted)] transition-all duration-200 hover:scale-[1.05] hover:rotate-[0.5deg] hover:border-[var(--color-accent-warm)] hover:text-[var(--color-accent-warm)] hover:shadow-sm"
               variants={pillVariant}
               initial="hidden"
               whileInView="visible"
@@ -59,7 +59,7 @@ export default function Tools() {
             >
               {tool.name}
               {/* Tooltip */}
-              <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-foreground px-3 py-1 text-xs font-sans text-background opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100 dark:bg-card dark:text-foreground">
+              <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[var(--color-card)] px-3 py-1 text-xs font-sans text-[var(--color-fg)] opacity-0 shadow-lg ring-1 ring-[var(--color-border)] transition-opacity duration-200 group-hover:opacity-100">
                 {tool.context}
               </span>
             </motion.span>

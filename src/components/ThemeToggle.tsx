@@ -19,14 +19,17 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 bg-foreground/5 transition-colors hover:bg-foreground/10"
+      className="relative flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-border)] transition-colors"
+      style={{ backgroundColor: 'color-mix(in oklab, var(--color-fg) 5%, transparent)' }}
+      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'color-mix(in oklab, var(--color-fg) 10%, transparent)'; }}
+      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'color-mix(in oklab, var(--color-fg) 5%, transparent)'; }}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
       <AnimatePresence mode="wait" initial={false}>
         {isDark ? (
           <motion.svg
             key="sun"
-            className="h-4 w-4 text-accent-warm"
+            className="h-4 w-4 text-[var(--color-accent-warm)]"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -51,7 +54,7 @@ export default function ThemeToggle() {
         ) : (
           <motion.svg
             key="moon"
-            className="h-4 w-4 text-foreground/70"
+            className="h-4 w-4 text-[var(--color-muted)]"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

@@ -56,14 +56,14 @@ export default function Contact() {
     <section id="contact" className="px-8 py-16 sm:py-20 md:px-12">
       <div className="mx-auto max-w-6xl">
         <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-muted"
+          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
           variants={slideIn}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-accent-warm">05</span> / Get in touch
+          <span className="text-[var(--color-accent-warm)]">05</span> / Get in touch
         </motion.p>
 
         <motion.div
@@ -77,7 +77,7 @@ export default function Contact() {
           <h2 className="text-4xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-5xl">
             Let&apos;s connect.
           </h2>
-          <p className="mt-4 max-w-xl leading-relaxed text-muted">
+          <p className="mt-4 max-w-xl leading-relaxed text-[var(--color-muted)]">
             Whether you have a project in mind, want to chat about product, or
             just want to say hi &mdash; I&apos;d love to hear from you.
           </p>
@@ -96,7 +96,7 @@ export default function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium text-accent transition-all hover:scale-105 hover:border-accent-hover hover:bg-accent-hover hover:text-white dark:border-foreground/15"
+                  className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] px-6 py-3 text-sm font-medium text-[var(--color-fg)] transition-all hover:scale-105 hover:border-[var(--color-accent-hover)] hover:bg-[var(--color-accent-hover)] hover:text-white"
                   strength={0.25}
                 >
                   <link.icon />
@@ -117,7 +117,7 @@ export default function Contact() {
             >
               <MagneticButton
                 href="/resume.pdf"
-                className="inline-flex items-center gap-2 rounded-full bg-accent-warm px-6 py-3 text-sm font-medium text-white transition-all hover:scale-105 hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--color-accent-warm)] px-6 py-3 text-sm font-medium text-white transition-all hover:scale-105 hover:opacity-90"
                 strength={0.25}
               >
                 <DownloadIcon />

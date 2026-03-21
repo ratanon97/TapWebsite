@@ -53,24 +53,24 @@ const cardVariants = {
 
 export default function PreviousWork() {
   return (
-    <section className="bg-surface px-8 py-16 sm:py-20 md:px-12 dark:bg-foreground/[0.03]">
+    <section className="bg-[var(--color-surface)] px-8 py-16 sm:py-20 md:px-12">
       <div className="mx-auto max-w-6xl">
         <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-muted"
+          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
           variants={slideIn}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-accent-warm">02</span> / Previously
+          <span className="text-[var(--color-accent-warm)]">02</span> / Previously
         </motion.p>
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {roles.map((role, i) => (
             <motion.div
               key={role.title + role.company}
-              className={`group relative overflow-hidden rounded-2xl border border-foreground/[0.06] bg-card p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:border-accent-warm/20 dark:bg-card/80 dark:border-foreground/10 dark:hover:border-accent-warm/30 ${
+              className={`group relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:border-[var(--color-accent-warm)] ${
                 role.size === "large"
                   ? "sm:col-span-2 lg:col-span-2 lg:row-span-2"
                   : ""
@@ -86,10 +86,10 @@ export default function PreviousWork() {
               }}
             >
               {/* Accent line */}
-              <div className="absolute left-0 top-0 h-full w-1 bg-accent-warm/0 transition-all duration-300 group-hover:bg-accent-warm" />
+              <div className="absolute left-0 top-0 h-full w-1 bg-transparent transition-all duration-300 group-hover:bg-[var(--color-accent-warm)]" />
 
               <div className="flex h-full flex-col">
-                <p className="text-xs font-medium uppercase tracking-wider text-accent-warm/80">
+                <p className="text-xs font-medium uppercase tracking-wider text-[var(--color-accent-warm)]">
                   {role.period}
                 </p>
                 <h3
@@ -101,9 +101,9 @@ export default function PreviousWork() {
                 >
                   {role.title}
                 </h3>
-                <p className="mt-1 text-sm text-muted">{role.company}</p>
+                <p className="mt-1 text-sm text-[var(--color-muted)]">{role.company}</p>
                 <p
-                  className={`mt-4 leading-relaxed text-foreground/60 ${
+                  className={`mt-4 leading-relaxed text-[var(--color-muted)] ${
                     role.size === "large"
                       ? "text-base max-w-xl"
                       : "text-sm"
@@ -118,7 +118,8 @@ export default function PreviousWork() {
                     {role.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-accent-warm/10 px-3 py-1 text-xs font-medium text-accent-warm dark:bg-accent-warm/15"
+                        className="rounded-full px-3 py-1 text-xs font-medium text-[var(--color-accent-warm)]"
+                        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 15%, transparent)' }}
                       >
                         {tag}
                       </span>

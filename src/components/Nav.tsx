@@ -33,14 +33,15 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed top-0 z-50 w-full bg-background/90 backdrop-blur-sm px-8 py-6 md:px-12 transition-transform duration-300 ease-in-out ${
+      className={`fixed top-0 z-50 w-full backdrop-blur-sm px-8 py-6 md:px-12 transition-transform duration-300 ease-in-out ${
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
+      style={{ backgroundColor: 'color-mix(in oklab, var(--color-bg) 90%, transparent)' }}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between">
         <a
           href="#"
-          className="text-xl font-semibold tracking-tight text-accent"
+          className="text-xl font-semibold tracking-tight text-[var(--color-accent)]"
         >
           Tap.
         </a>
@@ -49,7 +50,7 @@ export default function Nav() {
           <ThemeToggle />
           <a
             href="#contact"
-            className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-colors hover:bg-accent-warm"
+            className="rounded-full bg-[var(--color-fg)] px-5 py-2.5 text-sm font-medium text-[var(--color-bg)] transition-colors hover:bg-[var(--color-accent-warm)]"
           >
             Get in touch
           </a>

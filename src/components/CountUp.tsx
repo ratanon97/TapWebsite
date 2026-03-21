@@ -52,12 +52,12 @@ export default function CountUp({
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5 }}
     >
-      <p className="font-[family-name:var(--font-playfair)] text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+      <p className="font-[family-name:var(--font-playfair)] text-4xl font-bold tracking-tight text-[var(--color-fg)] sm:text-5xl">
         {prefix}
         {count}
         {suffix}
       </p>
-      <p className="mt-2 text-sm text-muted">{label}</p>
+      <p className="mt-2 text-sm text-[var(--color-muted)]">{label}</p>
     </motion.div>
   );
 }

@@ -19,17 +19,17 @@ const staggerUp = {
 
 export default function CurrentWork() {
   return (
-    <section id="work" className="px-8 py-16 sm:py-20 md:px-12 border-t border-foreground/5">
+    <section id="work" className="px-8 py-16 sm:py-20 md:px-12 border-t border-[var(--color-border)]">
       <div className="mx-auto max-w-6xl">
         <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-muted"
+          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
           variants={slideIn}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-accent-warm">01</span> / Currently
+          <span className="text-[var(--color-accent-warm)]">01</span> / Currently
         </motion.p>
 
         <motion.div
@@ -43,14 +43,14 @@ export default function CurrentWork() {
           <h2 className="text-4xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-5xl">
             Project Manager at Omise
           </h2>
-          <p className="mt-2 text-sm text-muted">March 2025 &mdash; Present</p>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
+          <p className="mt-2 text-sm text-[var(--color-muted)]">March 2025 &mdash; Present</p>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-muted)]">
             Leading cross-functional delivery of fintech projects at the Omise
             Pro business unit, managing sprint planning, backlog execution, and
             stakeholder alignment across product, engineering, clients and
             external partners.
           </p>
-          <ul className="mt-8 max-w-2xl space-y-3 pl-5 text-sm leading-relaxed text-muted">
+          <ul className="mt-8 max-w-2xl space-y-3 pl-5 text-sm leading-relaxed text-[var(--color-muted)]">
             {[
               "Led multi-partner digital wallet program serving 250K+ users and generating ~$420K in projected 3-year revenue, managing parallel integrations of open-loop wallet solutions with regulatory compliance",
               "Delivered the Report Engine project plan, scoping $300K annual opportunity to enhance merchant reporting capabilities",
@@ -59,7 +59,7 @@ export default function CurrentWork() {
             ].map((item, i) => (
               <motion.li
                 key={i}
-                className="list-disc marker:text-accent-warm"
+                className="list-disc marker:text-[var(--color-accent-warm)]"
                 variants={staggerUp}
                 initial="hidden"
                 whileInView="visible"
