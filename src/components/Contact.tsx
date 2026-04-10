@@ -53,8 +53,14 @@ const links = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="px-8 py-16 sm:py-20 md:px-12">
-      <div className="mx-auto max-w-6xl">
+    <section id="contact" className="relative overflow-hidden px-8 py-24 sm:py-32 md:px-12">
+      {/* Final atmospheric CTA glow */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 8%, transparent)' }}
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-6xl">
         <motion.p
           className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
           variants={slideIn}
@@ -74,15 +80,18 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h2 className="text-4xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-5xl">
+          <h2
+            className="text-5xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-6xl md:text-7xl"
+            style={{ lineHeight: 1.05, letterSpacing: '-0.02em' }}
+          >
             Let&apos;s connect.
           </h2>
-          <p className="mt-4 max-w-xl leading-relaxed text-[var(--color-muted)]">
+          <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-[var(--color-muted)]">
             Whether you have a project in mind, want to chat about product, or
             just want to say hi &mdash; I&apos;d love to hear from you.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-12 flex flex-wrap gap-4">
             {links.map((link, i) => (
               <motion.div
                 key={link.label}
@@ -117,7 +126,7 @@ export default function Contact() {
             >
               <MagneticButton
                 href="/resume.pdf"
-                className="inline-flex items-center gap-2 rounded-full bg-[var(--color-accent-warm)] px-6 py-3 text-sm font-medium text-white transition-all hover:scale-105 hover:opacity-90"
+                className="btn-glow inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-[#3A1F05] hover:scale-[1.03]"
                 strength={0.25}
               >
                 <DownloadIcon />

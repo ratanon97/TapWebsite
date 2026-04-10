@@ -53,8 +53,19 @@ const cardVariants = {
 
 export default function PreviousWork() {
   return (
-    <section className="bg-[var(--color-surface)] px-8 py-16 sm:py-20 md:px-12">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative overflow-hidden bg-[var(--color-surface)] px-8 py-24 sm:py-32 md:px-12">
+      {/* Atmospheric depth layer */}
+      <div
+        className="pointer-events-none absolute left-[-10%] top-[10%] h-96 w-96 rounded-full blur-3xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-hover) 7%, transparent)' }}
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute right-[-5%] bottom-[5%] h-80 w-80 rounded-full blur-3xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 6%, transparent)' }}
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-6xl">
         <motion.p
           className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
           variants={slideIn}
@@ -66,11 +77,11 @@ export default function PreviousWork() {
           <span className="text-[var(--color-accent-warm)]">02</span> / Previously
         </motion.p>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {roles.map((role, i) => (
             <motion.div
               key={role.title + role.company}
-              className={`group relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:border-[var(--color-accent-warm)] ${
+              className={`card-ring group relative overflow-hidden rounded-2xl bg-[var(--color-card)] p-7 sm:p-9 transition-transform duration-300 hover:-translate-y-1.5 ${
                 role.size === "large"
                   ? "sm:col-span-2 lg:col-span-2 lg:row-span-2"
                   : ""
@@ -81,7 +92,7 @@ export default function PreviousWork() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{
                 duration: 0.5,
-                delay: i * 0.1,
+                delay: i * 0.08,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
             >
@@ -95,17 +106,18 @@ export default function PreviousWork() {
                 <h3
                   className={`mt-3 font-[family-name:var(--font-playfair)] tracking-tight ${
                     role.size === "large"
-                      ? "text-2xl sm:text-3xl"
+                      ? "text-3xl sm:text-4xl lg:text-5xl"
                       : "text-xl sm:text-2xl"
                   }`}
+                  style={role.size === "large" ? { lineHeight: 1.1, letterSpacing: '-0.02em' } : undefined}
                 >
                   {role.title}
                 </h3>
-                <p className="mt-1 text-sm text-[var(--color-muted)]">{role.company}</p>
+                <p className="mt-2 text-sm text-[var(--color-muted)]">{role.company}</p>
                 <p
-                  className={`mt-4 leading-relaxed text-[var(--color-muted)] ${
+                  className={`mt-5 font-light leading-relaxed text-[var(--color-muted)] ${
                     role.size === "large"
-                      ? "text-base max-w-xl"
+                      ? "text-lg max-w-xl"
                       : "text-sm"
                   }`}
                 >

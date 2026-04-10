@@ -21,8 +21,14 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="px-8 py-16 sm:py-20 md:px-12">
-      <div className="mx-auto max-w-6xl">
+    <section id="about" className="relative overflow-hidden px-8 py-24 sm:py-32 md:px-12">
+      {/* Subtle warm atmospheric glow */}
+      <div
+        className="pointer-events-none absolute right-[10%] top-[30%] h-80 w-80 rounded-full blur-3xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 5%, transparent)' }}
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-6xl">
         <motion.p
           className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
           variants={slideIn}
@@ -35,15 +41,15 @@ export default function About() {
         </motion.p>
 
         {/* Stats row */}
-        <div className="mt-10 grid grid-cols-3 gap-8 border-b border-[var(--color-border)] pb-10">
+        <div className="mt-12 grid grid-cols-3 gap-8 border-b border-[var(--color-border)] pb-14">
           {stats.map((stat) => (
             <CountUp key={stat.label} {...stat} />
           ))}
         </div>
 
-        <div className="mt-10 max-w-2xl space-y-6 border-l-2 border-[var(--color-accent-warm)] pl-8">
+        <div className="mt-14 max-w-2xl space-y-7 border-l-2 border-[var(--color-accent-warm)] pl-10">
           <motion.p
-            className="text-lg leading-relaxed text-[var(--color-muted)]"
+            className="text-xl font-light leading-relaxed text-[var(--color-muted)]"
             variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
@@ -57,7 +63,7 @@ export default function About() {
             and chemicals industries.
           </motion.p>
           <motion.p
-            className="text-lg leading-relaxed text-[var(--color-muted)]"
+            className="text-xl font-light leading-relaxed text-[var(--color-muted)]"
             variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
@@ -70,7 +76,7 @@ export default function About() {
             analytics dashboards &mdash; I focus on making the complex feel simple.
           </motion.p>
           <motion.p
-            className="text-lg leading-relaxed text-[var(--color-muted)]"
+            className="text-xl font-light leading-relaxed text-[var(--color-muted)]"
             variants={fadeInRight}
             initial="hidden"
             whileInView="visible"

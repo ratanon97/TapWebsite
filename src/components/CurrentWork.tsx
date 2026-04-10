@@ -19,8 +19,14 @@ const staggerUp = {
 
 export default function CurrentWork() {
   return (
-    <section id="work" className="px-8 py-16 sm:py-20 md:px-12 border-t border-[var(--color-border)]">
-      <div className="mx-auto max-w-6xl">
+    <section id="work" className="relative px-8 py-24 sm:py-32 md:px-12 border-t border-[var(--color-border)]">
+      {/* Subtle atmospheric blob */}
+      <div
+        className="pointer-events-none absolute right-[5%] top-[20%] h-72 w-72 rounded-full blur-3xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 6%, transparent)' }}
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-6xl">
         <motion.p
           className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
           variants={slideIn}
@@ -33,18 +39,21 @@ export default function CurrentWork() {
         </motion.p>
 
         <motion.div
-          className="mt-8"
+          className="mt-10"
           variants={slideInContent}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <h2 className="text-4xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-5xl">
+          <h2
+            className="text-5xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-6xl md:text-7xl"
+            style={{ lineHeight: 1.05, letterSpacing: '-0.02em' }}
+          >
             Project Manager at Omise
           </h2>
-          <p className="mt-2 text-sm text-[var(--color-muted)]">March 2025 &mdash; Present</p>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-muted)]">
+          <p className="mt-3 text-sm text-[var(--color-muted)]">March 2025 &mdash; Present</p>
+          <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-[var(--color-muted)]">
             Leading cross-functional delivery of fintech projects at the Omise
             Pro business unit, managing sprint planning, backlog execution, and
             stakeholder alignment across product, engineering, clients and
@@ -75,3 +84,4 @@ export default function CurrentWork() {
     </section>
   );
 }
+

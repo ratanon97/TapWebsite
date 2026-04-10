@@ -13,23 +13,37 @@
   --color-accent: #2C2C2C;
   --color-accent-hover: #2563EB;
   --color-accent-warm: #D97706;
+  --color-accent-warm-glow: #F59E0B;
   --color-highlight: #bfdbfe;
   --color-card: #FFFFFF;
   --color-surface: #F3F4F6;
+  --color-surface-deep: #EAEAEC;
   --color-border: rgba(0, 0, 0, 0.08);
+  --color-ring: rgba(0, 0, 0, 0.06);
+  /* Gradient text stops for hero */
+  --grad-text-a: #1A1A1A;
+  --grad-text-b: #4B5563;
+  --grad-text-c: #6B7280;
 }
 
 .dark {
-  --color-bg: #111116;
+  --color-bg: #0A0A0E;
   --color-fg: #E8E4DE;
   --color-muted: #A8A29E;
   --color-accent: #D6D3CD;
   --color-accent-hover: #60A5FA;
   --color-accent-warm: #FBBF24;
+  --color-accent-warm-glow: #FCD34D;
   --color-highlight: #2A1F0A;
-  --color-card: #1C1C22;
-  --color-surface: #18181E;
-  --color-border: rgba(255, 255, 255, 0.1);
+  --color-card: #14141A;
+  --color-surface: #111116;
+  --color-surface-deep: #070709;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-ring: rgba(255, 255, 255, 0.12);
+  /* Gradient text stops — white → lavender → pale pink (Huly signature) */
+  --grad-text-a: #FFFFFF;
+  --grad-text-b: #D5D8F6;
+  --grad-text-c: #FDF7FE;
 }
 
 html {
@@ -42,4 +56,101 @@ body {
   font-family: var(--font-sans);
   min-height: 100vh;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ================================
+   Gradient text utility (hero)
+   Light mode: charcoal → slate fade
+   Dark mode: white → lavender → pink (Huly signature)
+================================ */
+.text-gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--grad-text-a) 0%,
+    var(--grad-text-a) 30%,
+    var(--grad-text-b) 70%,
+    var(--grad-text-c) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ================================
+   Glowing CTA button (Huly-style)
+================================ */
+.btn-glow {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-warm) 0%,
+    var(--color-accent-warm-glow) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 10px 30px -10px color-mix(in oklab, var(--color-accent-warm) 60%, transparent),
+    0 4px 12px -2px color-mix(in oklab, var(--color-accent-warm) 40%, transparent);
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+
+.btn-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in oklab, var(--color-accent-warm-glow) 40%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(16px);
+  z-index: -1;
+  opacity: 0.75;
+  animation: glow-pulse 3.5s ease-in-out infinite;
+}
+
+.btn-glow:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.25) inset,
+    0 1px 0 rgba(255, 255, 255, 0.45) inset,
+    0 14px 40px -8px color-mix(in oklab, var(--color-accent-warm) 70%, transparent),
+    0 6px 16px -2px color-mix(in oklab, var(--color-accent-warm) 50%, transparent);
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-glow::before {
+    animation: none;
+  }
+}
+
+/* ================================
+   Card ring (Huly-style semi-transparent ring)
+================================ */
+.card-ring {
+  box-shadow:
+    0 0 0 1px var(--color-border),
+    0 0 0 6px var(--color-ring),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-ring:hover {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--color-accent-warm) 50%, var(--color-border)),
+    0 0 0 6px color-mix(in oklab, var(--color-accent-warm) 15%, var(--color-ring)),
+    0 20px 40px -16px rgba(0, 0, 0, 0.15),
+    0 8px 20px -8px rgba(0, 0, 0, 0.1);
 }

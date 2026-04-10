@@ -26,7 +26,7 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-8 pb-24 pt-20 md:px-12"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-8 pb-32 pt-24 md:px-12 sm:pb-40 sm:pt-28"
     >
       {/* Floating decorative elements */}
       <motion.div
@@ -47,7 +47,7 @@ export default function Hero() {
 
       <motion.div className="relative mx-auto max-w-6xl" style={{ opacity: bgOpacity }}>
         <motion.h1
-          className="max-w-4xl text-5xl leading-[1.4] tracking-tight sm:text-6xl md:text-[4rem]"
+          className="max-w-4xl text-5xl leading-[1.4] tracking-tight sm:text-6xl md:text-[4.5rem] lg:text-[5rem]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
