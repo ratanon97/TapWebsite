@@ -69,7 +69,7 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-[var(--color-accent-warm)]">05</span> / Get in touch
+          <span className="text-[var(--color-accent-warm)]">07</span> / Get in touch
         </motion.p>
 
         <motion.div

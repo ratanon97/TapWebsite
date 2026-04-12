@@ -37,7 +37,7 @@ export default function About() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-[var(--color-accent-warm)]">03</span> / About
+          <span className="text-[var(--color-accent-warm)]">05</span> / About
         </motion.p>
 
         {/* Stats row */}

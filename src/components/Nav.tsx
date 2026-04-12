@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Nav() {
@@ -46,7 +47,13 @@ export default function Nav() {
           Tap.
         </a>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-5">
+          <Link
+            href="/stories"
+            className="hidden text-sm font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent-warm)] sm:inline"
+          >
+            Stories
+          </Link>
           <ThemeToggle />
           <a
             href="#contact"

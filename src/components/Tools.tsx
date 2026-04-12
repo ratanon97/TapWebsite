@@ -45,7 +45,7 @@ export default function Tools() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-[var(--color-accent-warm)]">04</span> / Tools &amp; Methods
+          <span className="text-[var(--color-accent-warm)]">06</span> / Tools &amp; Methods
         </motion.p>
 
         <div className="mt-12 flex flex-wrap gap-3">

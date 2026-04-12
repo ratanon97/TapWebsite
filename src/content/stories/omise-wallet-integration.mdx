@@ -1,0 +1,39 @@
+---
+title: "Integrating an open-loop wallet under regulator pressure"
+slug: "omise-wallet-integration"
+date: "2025-11-14"
+project: "Omise"
+tags: ["fintech", "stakeholder-alignment", "integration", "compliance"]
+summary: "250K users, two partners, one regulator, and a three-week window — the story of holding the line when the API isn't the hard part."
+lesson: "How to keep a multi-party fintech integration on track when the real risk is stakeholder drift, not engineering."
+heroQuote: "The hardest part wasn't the API — it was the 3pm call on a Friday."
+featured: true
+---
+
+## The situation
+
+We had signed two wallet partners into a program that would eventually serve 250,000+ users and generate roughly $420K in projected three-year revenue. On paper, it was an integration project. In practice, it was three organisations — us, the partners, and a regulator — moving at three different speeds, reading the same requirements three different ways.
+
+The engineering scope was well-understood: open-loop wallet, compliance checks, reconciliation. None of it was the part I lost sleep over.
+
+## The tension
+
+Partner A was ready to ship. Partner B was still clarifying scope. The regulator was unmoved by either fact. And inside our own team, product and engineering disagreed on which surface area of the wallet counted as "MVP" — the kind of disagreement where both sides are technically right and the project dies while they're being right at each other.
+
+The 3pm call on a Friday was the moment it almost came apart. Partner B wanted to push back launch by a month. Partner A, hearing this, wanted to launch without them. I had about twenty minutes to figure out whether that was a real option or a panic reaction dressed up as decisiveness.
+
+## What I did
+
+**I stopped trying to align everyone on the answer and started aligning them on the question.** Before the call, I wrote a one-page document with three things on it: what the regulator had actually said (verbatim, not paraphrased), what launching without Partner B would mean for the revenue model, and what the minimum viable compliance envelope looked like. No recommendations. Just the shape of the decision.
+
+**I ran the meeting against that document, not against opinions.** When Partner A pushed for a unilateral launch, I walked them through what the compliance envelope actually required — which was Partner B's data. The "launch without them" option quietly removed itself from the table without anyone having to lose face.
+
+**I then did the harder thing and re-scoped with Partner B live, on the call.** Instead of a month's delay, we found four days of real blockers and three weeks of "we haven't looked at it yet." We pulled the blockers forward, parked the rest, and committed to a two-week slip instead of four.
+
+**After the call, I sent a written recap the same afternoon.** Not minutes — a decision record. Who agreed to what, what's blocked on whom, and what the next checkpoint is. This is the unglamorous half of stakeholder alignment: the version that exists in writing is the version that actually happened.
+
+## What I learned
+
+Fintech integration problems look like engineering problems and solve like communication problems. The API was always going to work. The question was whether three organisations could stay on the same page for long enough for the API to matter — and the thing that kept them there wasn't consensus, it was a shared document of what the decision actually was.
+
+The wallet shipped two weeks late. Nobody remembers the two weeks. They remember that it shipped.
