@@ -50,21 +50,18 @@ export default function CurrentWork() {
             className="text-5xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-6xl md:text-7xl"
             style={{ lineHeight: 1.05, letterSpacing: '-0.02em' }}
           >
-            Project Manager at Omise
+            Incoming Associate Technical Product Manager at Omise
           </h2>
-          <p className="mt-3 text-sm text-[var(--color-muted)]">March 2025 &mdash; Present</p>
+          <p className="mt-3 text-sm text-[var(--color-muted)]">Starting June 2026</p>
           <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-[var(--color-muted)]">
-            Leading cross-functional delivery of fintech projects at the Omise
-            Pro business unit, managing sprint planning, backlog execution, and
-            stakeholder alignment across product, engineering, clients and
-            external partners.
+            Stepping into the Associate Technical Product Manager role to lead
+            Omise&rsquo;s Wallet as a Service (WaaS) product, owning strategy,
+            roadmap, and execution across product, engineering, and partner
+            teams.
           </p>
           <ul className="mt-8 max-w-2xl space-y-3 pl-5 text-sm leading-relaxed text-[var(--color-muted)]">
             {[
-              "Led multi-partner digital wallet program serving 250K+ users and generating ~$420K in projected 3-year revenue, managing parallel integrations of open-loop wallet solutions with regulatory compliance",
-              "Delivered the Report Engine project plan, scoping $300K annual opportunity to enhance merchant reporting capabilities",
-              "Coordinated CYBS REST API rollout for Thai banks, enabling major client migration to Cybersource that drove ~$150K/month in savings",
-              "Established structured Agile cadences, streamlined documentation and reporting processes",
+              "Driving the Wallet as a Service (WaaS) product end-to-end, defining strategy, roadmap, and partner integrations for open-loop digital wallet solutions",
             ].map((item, i) => (
               <motion.li
                 key={i}

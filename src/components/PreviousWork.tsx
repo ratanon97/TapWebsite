@@ -9,12 +9,21 @@ const slideIn = {
 
 const roles = [
   {
+    title: "Project Manager",
+    company: "Omise",
+    period: "March 2025 — June 2026",
+    description:
+      "Led cross-functional delivery of fintech projects at the Omise Pro business unit, managing sprint planning, backlog execution, and stakeholder alignment across product, engineering, clients and external partners. Spearheaded a multi-partner digital wallet program serving 250K+ users with ~$420K projected 3-year revenue, delivered the Report Engine project plan scoping a $300K annual opportunity, and coordinated the CYBS REST API rollout for Thai banks that drove ~$150K/month in savings.",
+    size: "large" as const,
+    tags: ["Fintech", "Digital Wallets", "Agile", "Stakeholder Management"],
+  },
+  {
     title: "Digital Project Manager",
     company: "Indorama Ventures PCL",
     period: "June 2020 — March 2025",
     description:
-      "Managed the data integration of Workday\u2019s Adaptive Planning module. Contributed to solution design and data modeling for procurement analytics. Initiated the COMA App for customer and product profitability data. Developed user-centric Tableau dashboards and managed vendor partnerships for supply chain analytics software.",
-    size: "large" as const,
+      "Managed the data integration of Workday’s Adaptive Planning module. Contributed to solution design and data modeling for procurement analytics. Initiated the COMA App for customer and product profitability data. Developed user-centric Tableau dashboards and managed vendor partnerships for supply chain analytics software.",
+    size: "small" as const,
     tags: ["Workday", "Tableau", "Data Modeling", "Vendor Management"],
   },
   {
@@ -31,7 +40,7 @@ const roles = [
     company: "IRPC Public Company Limited",
     period: "August 2018",
     description:
-      "Analysed a competing country\u2019s export data to identify its target countries and presented findings to the team leader.",
+      "Analysed a competing country’s export data to identify its target countries and presented findings to the team leader.",
     size: "small" as const,
     tags: ["Market Analysis", "Export Data"],
   },
