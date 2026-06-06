@@ -1,11 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const slideIn = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
-};
+import SectionLabel from "./SectionLabel";
+import { cardVariants, easeOutExpo } from "@/lib/motion";
 
 const roles = [
   {
@@ -55,11 +52,6 @@ const roles = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.96 },
-  visible: { opacity: 1, y: 0, scale: 1 },
-};
-
 export default function PreviousWork() {
   return (
     <section className="relative overflow-hidden bg-[var(--color-surface)] px-8 py-24 sm:py-32 md:px-12">
@@ -75,16 +67,7 @@ export default function PreviousWork() {
         aria-hidden
       />
       <div className="relative mx-auto max-w-6xl">
-        <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
-          variants={slideIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-[var(--color-accent-warm)]">02</span> / Previously
-        </motion.p>
+        <SectionLabel number="02" label="Previously" />
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {roles.map((role, i) => (
@@ -102,7 +85,7 @@ export default function PreviousWork() {
               transition={{
                 duration: 0.5,
                 delay: i * 0.08,
-                ease: [0.25, 0.1, 0.25, 1],
+                ease: easeOutExpo,
               }}
             >
               {/* Accent line */}

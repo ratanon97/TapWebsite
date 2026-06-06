@@ -1,11 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const slideIn = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
-};
+import SectionLabel from "./SectionLabel";
+import { easeOutExpo } from "@/lib/motion";
 
 const slideInContent = {
   hidden: { opacity: 0, x: -40 },
@@ -27,16 +24,7 @@ export default function CurrentWork() {
         aria-hidden
       />
       <div className="relative mx-auto max-w-6xl">
-        <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
-          variants={slideIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-[var(--color-accent-warm)]">01</span> / Currently
-        </motion.p>
+        <SectionLabel number="01" label="Currently" />
 
         <motion.div
           className="mt-10"
@@ -44,7 +32,7 @@ export default function CurrentWork() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6, delay: 0.1, ease: easeOutExpo }}
         >
           <h2
             className="text-5xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-6xl md:text-7xl"

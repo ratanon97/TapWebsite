@@ -1,11 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const slideIn = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
-};
+import SectionLabel from "./SectionLabel";
 
 const pillVariant = {
   hidden: { opacity: 0, scale: 0.8, y: 10 },
@@ -37,16 +33,7 @@ export default function Tools() {
         aria-hidden
       />
       <div className="relative mx-auto max-w-6xl">
-        <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
-          variants={slideIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-[var(--color-accent-warm)]">06</span> / Tools &amp; Methods
-        </motion.p>
+        <SectionLabel number="06" label="Tools & Methods" />
 
         <div className="mt-12 flex flex-wrap gap-3">
           {tools.map((tool, i) => (

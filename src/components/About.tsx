@@ -2,11 +2,7 @@
 
 import { motion } from "framer-motion";
 import CountUp from "./CountUp";
-
-const slideIn = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
-};
+import SectionLabel from "./SectionLabel";
 
 const fadeInRight = {
   hidden: { opacity: 0, x: 30 },
@@ -29,16 +25,7 @@ export default function About() {
         aria-hidden
       />
       <div className="relative mx-auto max-w-6xl">
-        <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
-          variants={slideIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-[var(--color-accent-warm)]">05</span> / About
-        </motion.p>
+        <SectionLabel number="05" label="About" />
 
         {/* Stats row */}
         <div className="mt-12 grid grid-cols-3 gap-8 border-b border-[var(--color-border)] pb-14">

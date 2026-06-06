@@ -5,11 +5,8 @@ import { useFormStatus } from "react-dom";
 import { motion } from "framer-motion";
 
 import { initialSubscribeState, subscribe } from "@/app/actions/subscribe";
-
-const slideIn = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
-};
+import SectionLabel from "./SectionLabel";
+import { easeOutExpo } from "@/lib/motion";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -43,16 +40,7 @@ export default function OptIn() {
         aria-hidden
       />
       <div className="relative mx-auto max-w-3xl">
-        <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
-          variants={slideIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-[var(--color-accent-warm)]">07</span> / Join the list
-        </motion.p>
+        <SectionLabel number="08" label="Join the list" />
 
         <motion.h2
           className="mt-6 text-4xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-5xl md:text-6xl"
@@ -61,7 +49,7 @@ export default function OptIn() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6, delay: 0.1, ease: easeOutExpo }}
         >
           Get the next field note in your inbox.
         </motion.h2>

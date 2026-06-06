@@ -2,11 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-const slideIn = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
-};
+import SectionLabel from "./SectionLabel";
+import { slideIn } from "@/lib/motion";
 
 const rowVariant = {
   hidden: { opacity: 0, y: 12 },
@@ -44,16 +41,7 @@ export default function FieldNotes({ notes }: { notes: FieldNoteRow[] }) {
       />
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
-          <motion.p
-            className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
-            variants={slideIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="text-[var(--color-accent-warm)]">04</span> / Field Notes
-          </motion.p>
+          <SectionLabel number="04" label="Field Notes" />
           <Link
             href="/stories"
             className="text-sm font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent-warm)]"

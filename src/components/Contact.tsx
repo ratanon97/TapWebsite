@@ -2,16 +2,8 @@
 
 import { motion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const slideIn = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
-};
+import SectionLabel from "./SectionLabel";
+import { fadeUp } from "@/lib/motion";
 
 const buttonPop = {
   hidden: { opacity: 0, scale: 0.9 },
@@ -61,16 +53,7 @@ export default function Contact() {
         aria-hidden
       />
       <div className="relative mx-auto max-w-6xl">
-        <motion.p
-          className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
-          variants={slideIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-[var(--color-accent-warm)]">07</span> / Get in touch
-        </motion.p>
+        <SectionLabel number="07" label="Get in touch" />
 
         <motion.div
           className="mt-8"

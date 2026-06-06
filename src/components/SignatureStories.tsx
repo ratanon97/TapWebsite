@@ -2,16 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-const slideIn = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.96 },
-  visible: { opacity: 1, y: 0, scale: 1 },
-};
+import SectionLabel from "./SectionLabel";
+import { slideIn, cardVariants, easeOutExpo } from "@/lib/motion";
 
 export type SignatureStoryCard = {
   slug: string;
@@ -37,16 +29,7 @@ export default function SignatureStories({ stories }: { stories: SignatureStoryC
       />
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
-          <motion.p
-            className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]"
-            variants={slideIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="text-[var(--color-accent-warm)]">03</span> / Signature Stories
-          </motion.p>
+          <SectionLabel number="03" label="Signature Stories" />
           <Link
             href="/stories"
             className="hidden text-sm font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-accent-warm)] sm:inline"
@@ -62,7 +45,7 @@ export default function SignatureStories({ stories }: { stories: SignatureStoryC
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6, delay: 0.1, ease: easeOutExpo }}
         >
           The process behind the work.
         </motion.h2>
@@ -88,7 +71,7 @@ export default function SignatureStories({ stories }: { stories: SignatureStoryC
               transition={{
                 duration: 0.5,
                 delay: i * 0.08,
-                ease: [0.25, 0.1, 0.25, 1],
+                ease: easeOutExpo,
               }}
             >
               <Link
