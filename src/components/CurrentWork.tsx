@@ -38,14 +38,13 @@ export default function CurrentWork() {
             className="text-5xl font-[family-name:var(--font-playfair)] tracking-tight sm:text-6xl md:text-7xl"
             style={{ lineHeight: 1.05, letterSpacing: '-0.02em' }}
           >
-            Incoming Associate Technical Product Manager at Omise
+            Associate Technical Product Manager at Omise
           </h2>
-          <p className="mt-3 text-sm text-[var(--color-muted)]">Starting June 2026</p>
+          <p className="mt-3 text-sm text-[var(--color-muted)]">At Omise since June 2026</p>
           <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-[var(--color-muted)]">
-            Stepping into the Associate Technical Product Manager role to lead
-            Omise&rsquo;s Wallet as a Service (WaaS) product, owning strategy,
-            roadmap, and execution across product, engineering, and partner
-            teams.
+            Leading Omise&rsquo;s Wallet as a Service (WaaS) product, owning
+            strategy, roadmap, and execution across product, engineering, and
+            partner teams.
           </p>
           <ul className="mt-8 max-w-2xl space-y-3 pl-5 text-sm leading-relaxed text-[var(--color-muted)]">
             {[
