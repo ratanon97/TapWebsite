@@ -46,12 +46,6 @@ const links = [
 export default function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden px-8 py-24 sm:py-32 md:px-12">
-      {/* Final atmospheric CTA glow */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 8%, transparent)' }}
-        aria-hidden
-      />
       <div className="relative mx-auto max-w-6xl">
         <SectionLabel number="07" label="Get in touch" />
 
@@ -88,7 +82,7 @@ export default function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] px-6 py-3 text-sm font-medium text-[var(--color-fg)] transition-all hover:scale-105 hover:border-[var(--color-accent-hover)] hover:bg-[var(--color-accent-hover)] hover:text-white"
+                  className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] px-6 py-3 text-sm font-medium text-[var(--color-fg)] transition-colors hover:border-[var(--color-ring)] hover:bg-[var(--color-surface)]"
                   strength={0.25}
                 >
                   <link.icon />
@@ -109,7 +103,7 @@ export default function Contact() {
             >
               <MagneticButton
                 href="/resume.pdf"
-                className="btn-glow inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-[#3A1F05] hover:scale-[1.03]"
+                className="btn-glow inline-flex items-center gap-2 rounded-lg px-7 py-3 text-sm font-medium text-white"
                 strength={0.25}
               >
                 <DownloadIcon />

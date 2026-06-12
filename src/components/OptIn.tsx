@@ -19,7 +19,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="btn-glow inline-flex shrink-0 items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-[#3A1F05] transition-transform hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-70"
+      className="btn-glow inline-flex shrink-0 items-center justify-center gap-2 rounded-lg px-7 py-3 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-70"
     >
       {pending ? "Sending…" : "Join the list"}
     </button>
@@ -34,11 +34,6 @@ export default function OptIn() {
       id="subscribe"
       className="relative overflow-hidden border-t border-[var(--color-border)] bg-[var(--color-surface-deep)] px-8 py-24 sm:py-32 md:px-12"
     >
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-        style={{ backgroundColor: "color-mix(in oklab, var(--color-accent-warm) 7%, transparent)" }}
-        aria-hidden
-      />
       <div className="relative mx-auto max-w-3xl">
         <SectionLabel number="08" label="Join the list" />
 
@@ -82,7 +77,7 @@ export default function OptIn() {
             name="email"
             required
             placeholder="you@domain.com"
-            className="flex-1 rounded-full border border-[var(--color-border)] bg-[var(--color-card)] px-5 py-3 text-base text-[var(--color-fg)] outline-none transition-colors placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent-warm)]"
+            className="flex-1 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] px-4 py-3 text-base text-[var(--color-fg)] outline-none transition-colors placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent-warm)]"
           />
           <SubmitButton />
         </motion.form>

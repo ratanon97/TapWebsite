@@ -17,12 +17,6 @@ const staggerUp = {
 export default function CurrentWork() {
   return (
     <section id="work" className="relative px-8 py-24 sm:py-32 md:px-12 border-t border-[var(--color-border)]">
-      {/* Subtle atmospheric blob */}
-      <div
-        className="pointer-events-none absolute right-[5%] top-[20%] h-72 w-72 rounded-full blur-3xl"
-        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 6%, transparent)' }}
-        aria-hidden
-      />
       <div className="relative mx-auto max-w-6xl">
         <SectionLabel number="01" label="Currently" />
 

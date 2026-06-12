@@ -34,11 +34,6 @@ export default function FieldNotes({ notes }: { notes: FieldNoteRow[] }) {
 
   return (
     <section className="relative overflow-hidden bg-[var(--color-surface)] px-8 py-24 sm:py-32 md:px-12">
-      <div
-        className="pointer-events-none absolute left-[-5%] bottom-[10%] h-80 w-80 rounded-full blur-3xl"
-        style={{ backgroundColor: "color-mix(in oklab, var(--color-accent-warm) 6%, transparent)" }}
-        aria-hidden
-      />
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
           <SectionLabel number="04" label="Field Notes" />

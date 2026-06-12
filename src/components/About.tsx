@@ -18,12 +18,6 @@ const stats = [
 export default function About() {
   return (
     <section id="about" className="relative overflow-hidden px-8 py-24 sm:py-32 md:px-12">
-      {/* Subtle warm atmospheric glow */}
-      <div
-        className="pointer-events-none absolute right-[10%] top-[30%] h-80 w-80 rounded-full blur-3xl"
-        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 5%, transparent)' }}
-        aria-hidden
-      />
       <div className="relative mx-auto max-w-6xl">
         <SectionLabel number="05" label="About" />
 

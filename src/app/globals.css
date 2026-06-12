@@ -1,53 +1,50 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter), "Inter", sans-serif;
-  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
-  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  --font-sans: var(--font-inter), "Inter", -apple-system, system-ui, sans-serif;
+  --font-serif: var(--font-inter), "Inter", -apple-system, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
 }
 
+/* ================================
+   Linear design system tokens (DESIGN-linear.app.md)
+   Dark-only canvas — the spec ships no light mode.
+================================ */
 :root {
-  --color-bg: #FAFAFA;
-  --color-fg: #1A1A1A;
-  --color-muted: #6B7280;
-  --color-accent: #2C2C2C;
-  --color-accent-hover: #2563EB;
-  --color-accent-warm: #D97706;
-  --color-accent-warm-glow: #F59E0B;
-  --color-highlight: #bfdbfe;
-  --color-card: #FFFFFF;
-  --color-surface: #F3F4F6;
-  --color-surface-deep: #EAEAEC;
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-ring: rgba(0, 0, 0, 0.06);
-  /* Gradient text stops for hero */
-  --grad-text-a: #1A1A1A;
-  --grad-text-b: #4B5563;
-  --grad-text-c: #6B7280;
-}
+  /* Components reference --font-playfair directly; the serif voice is retired */
+  --font-playfair: var(--font-inter), "Inter", -apple-system, system-ui, sans-serif;
 
-.dark {
-  --color-bg: #0A0A0E;
-  --color-fg: #E8E4DE;
-  --color-muted: #A8A29E;
-  --color-accent: #D6D3CD;
-  --color-accent-hover: #60A5FA;
-  --color-accent-warm: #FBBF24;
-  --color-accent-warm-glow: #FCD34D;
-  --color-highlight: #2A1F0A;
-  --color-card: #14141A;
-  --color-surface: #111116;
-  --color-surface-deep: #070709;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-ring: rgba(255, 255, 255, 0.12);
-  /* Gradient text stops — white → lavender → pale pink (Huly signature) */
-  --grad-text-a: #FFFFFF;
-  --grad-text-b: #D5D8F6;
-  --grad-text-c: #FDF7FE;
+  /* Surfaces: canvas → surface ladder */
+  --color-bg: #010102;            /* canvas */
+  --color-card: #0f1011;          /* surface-1: cards, panels */
+  --color-surface: #141516;       /* surface-2: featured/hovered lifts */
+  --color-surface-deep: #08090a;  /* well between canvas and surface-1 */
+  --color-highlight: #18191a;     /* surface-3: neutral highlight fill */
+
+  /* Ink ladder */
+  --color-fg: #f7f8f8;            /* ink */
+  --color-accent: #f7f8f8;        /* emphasized text = ink (lavender stays scarce) */
+  --color-muted: #8a8f98;         /* ink-subtle */
+
+  /* Single chromatic accent: Linear lavender-blue */
+  --color-accent-warm: #5e6ad2;       /* primary */
+  --color-accent-warm-glow: #828fff;  /* primary-hover */
+  --color-accent-hover: #828fff;      /* primary-hover */
+  --color-focus: #5e69d1;             /* primary-focus */
+
+  /* Hairlines */
+  --color-border: #23252a;        /* hairline */
+  --color-ring: #34343a;          /* hairline-strong */
+
+  /* Gradient text stops — quiet monochrome ink fade, no chroma */
+  --grad-text-a: #f7f8f8;
+  --grad-text-b: #d0d6e0;
+  --grad-text-c: #8a8f98;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -55,13 +52,26 @@ body {
   color: var(--color-fg);
   font-family: var(--font-sans);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Single voice: display 600 with negative tracking, body 400 */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Focus ring: 2px primary-focus outline at 50% opacity */
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-focus) 50%, transparent);
+  outline-offset: 2px;
 }
 
 /* ================================
    Gradient text utility (hero)
-   Light mode: charcoal → slate fade
-   Dark mode: white → lavender → pink (Huly signature)
+   Monochrome ink fade — the spec allows no atmospheric color
 ================================ */
 .text-gradient {
   background-image: linear-gradient(
@@ -78,81 +88,35 @@ body {
 }
 
 /* ================================
-   Glowing CTA button (Huly-style)
+   Primary CTA — flat lavender, subtle top edge highlight,
+   no glow, no pulse (Linear button-primary)
 ================================ */
 .btn-glow {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    var(--color-accent-warm) 0%,
-    var(--color-accent-warm-glow) 100%
-  );
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
-    0 1px 0 rgba(255, 255, 255, 0.35) inset,
-    0 10px 30px -10px color-mix(in oklab, var(--color-accent-warm) 60%, transparent),
-    0 4px 12px -2px color-mix(in oklab, var(--color-accent-warm) 40%, transparent);
-  transition: transform 0.25s ease, box-shadow 0.3s ease;
-}
-
-.btn-glow::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: radial-gradient(
-    ellipse at center,
-    color-mix(in oklab, var(--color-accent-warm-glow) 40%, transparent) 0%,
-    transparent 70%
-  );
-  filter: blur(16px);
-  z-index: -1;
-  opacity: 0.75;
-  animation: glow-pulse 3.5s ease-in-out infinite;
+  background: var(--color-accent-warm);
+  color: #ffffff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: background-color 0.2s ease;
 }
 
 .btn-glow:hover {
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.25) inset,
-    0 1px 0 rgba(255, 255, 255, 0.45) inset,
-    0 14px 40px -8px color-mix(in oklab, var(--color-accent-warm) 70%, transparent),
-    0 6px 16px -2px color-mix(in oklab, var(--color-accent-warm) 50%, transparent);
+  background: var(--color-accent-hover);
 }
 
-@keyframes glow-pulse {
-  0%, 100% {
-    opacity: 0.55;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.9;
-    transform: scale(1.05);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .btn-glow::before {
-    animation: none;
-  }
+.btn-glow:active {
+  background: var(--color-focus);
 }
 
 /* ================================
-   Card ring (Huly-style semi-transparent ring)
+   Card — surface-1 lift with 1px hairline, no drop shadow
 ================================ */
 .card-ring {
-  box-shadow:
-    0 0 0 1px var(--color-border),
-    0 0 0 6px var(--color-ring),
-    0 1px 2px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 0 1px var(--color-border);
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .card-ring:hover {
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--color-accent-warm) 50%, var(--color-border)),
-    0 0 0 6px color-mix(in oklab, var(--color-accent-warm) 15%, var(--color-ring)),
-    0 20px 40px -16px rgba(0, 0, 0, 0.15),
-    0 8px 20px -8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 1px var(--color-ring);
 }
 
 /* ================================
@@ -162,7 +126,7 @@ body {
   color: var(--color-fg);
   font-size: 1.125rem;
   line-height: 1.75;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .story-prose > * + * {
@@ -170,20 +134,20 @@ body {
 }
 
 .story-prose h2 {
-  font-family: var(--font-serif);
   font-size: 2rem;
   line-height: 1.2;
-  letter-spacing: -0.01em;
-  font-weight: 500;
+  letter-spacing: -0.025em;
+  font-weight: 600;
   color: var(--color-fg);
   margin-top: 2.75em;
   margin-bottom: 0.75em;
 }
 
 .story-prose h3 {
-  font-family: var(--font-serif);
   font-size: 1.5rem;
   line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 600;
   color: var(--color-fg);
   margin-top: 2em;
   margin-bottom: 0.5em;
@@ -199,14 +163,14 @@ body {
 }
 
 .story-prose a {
-  color: var(--color-accent-warm);
+  color: var(--color-accent-warm-glow);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
 }
 
 .story-prose a:hover {
-  color: var(--color-accent-warm-glow);
+  color: var(--color-fg);
 }
 
 .story-prose blockquote {
@@ -230,7 +194,8 @@ body {
 .story-prose code {
   font-family: var(--font-mono);
   font-size: 0.9em;
-  background: var(--color-surface);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
   padding: 0.15em 0.4em;
   border-radius: 0.3em;
 }

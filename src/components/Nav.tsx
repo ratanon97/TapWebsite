@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
 
 export default function Nav() {
   const [hidden, setHidden] = useState(false);
@@ -42,7 +41,7 @@ export default function Nav() {
       <div className="mx-auto flex max-w-6xl items-center justify-between">
         <a
           href="#"
-          className="text-xl font-semibold tracking-tight text-[var(--color-accent)]"
+          className="text-xl font-semibold tracking-tight text-[var(--color-accent-warm)]"
         >
           Tap.
         </a>
@@ -54,10 +53,9 @@ export default function Nav() {
           >
             Stories
           </Link>
-          <ThemeToggle />
           <a
             href="#contact"
-            className="rounded-full bg-[var(--color-fg)] px-5 py-2.5 text-sm font-medium text-[var(--color-bg)] transition-colors hover:bg-[var(--color-accent-warm)]"
+            className="rounded-lg bg-[var(--color-fg)] px-5 py-2.5 text-sm font-medium text-[var(--color-bg)] transition-opacity hover:opacity-90"
           >
             Get in touch
           </a>

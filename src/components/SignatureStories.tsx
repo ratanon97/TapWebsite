@@ -22,11 +22,6 @@ export default function SignatureStories({ stories }: { stories: SignatureStoryC
       id="stories"
       className="relative overflow-hidden px-8 py-24 sm:py-32 md:px-12 border-t border-[var(--color-border)]"
     >
-      <div
-        className="pointer-events-none absolute right-[-8%] top-[15%] h-96 w-96 rounded-full blur-3xl"
-        style={{ backgroundColor: "color-mix(in oklab, var(--color-accent-warm) 7%, transparent)" }}
-        aria-hidden
-      />
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
           <SectionLabel number="03" label="Signature Stories" />
