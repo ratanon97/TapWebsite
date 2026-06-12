@@ -63,6 +63,11 @@ export default async function StoryPage(
       <Nav />
       <main>
         <article className="relative px-8 pt-40 pb-24 sm:pt-48 md:px-12">
+          <div
+            className="pointer-events-none absolute right-[-5%] top-[10%] h-96 w-96 rounded-full blur-3xl"
+            style={{ backgroundColor: "color-mix(in oklab, var(--color-accent-warm) 7%, transparent)" }}
+            aria-hidden
+          />
           <div className="relative mx-auto max-w-3xl">
             <Link
               href="/stories"

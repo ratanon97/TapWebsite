@@ -32,6 +32,11 @@ export default function StoriesIndexPage() {
       <Nav />
       <main>
         <section className="relative px-8 pt-40 pb-20 sm:pt-48 md:px-12">
+          <div
+            className="pointer-events-none absolute left-[-5%] top-[15%] h-96 w-96 rounded-full blur-3xl"
+            style={{ backgroundColor: "color-mix(in oklab, var(--color-accent-warm) 7%, transparent)" }}
+            aria-hidden
+          />
           <div className="relative mx-auto max-w-4xl">
             <p className="text-sm font-medium uppercase tracking-widest text-[var(--color-muted)]">
               <span className="text-[var(--color-accent-warm)]">All</span> / Stories

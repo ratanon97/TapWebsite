@@ -26,6 +26,12 @@ const tools = [
 export default function Tools() {
   return (
     <section className="relative overflow-hidden bg-[var(--color-surface-deep)] px-8 py-24 sm:py-32 md:px-12">
+      {/* Atmospheric depth */}
+      <div
+        className="pointer-events-none absolute left-[20%] top-[10%] h-72 w-72 rounded-full blur-3xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 6%, transparent)' }}
+        aria-hidden
+      />
       <div className="relative mx-auto max-w-6xl">
         <SectionLabel number="06" label="Tools & Methods" />
 

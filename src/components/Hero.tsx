@@ -17,23 +17,46 @@ export default function Hero() {
   const ctaY = useTransform(scrollYProgress, [0, 1], [0, -10]);
   const bgOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  // Floating decorative elements -- move in opposite directions
+  const float1Y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const float1X = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const float2Y = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const float3Y = useTransform(scrollYProgress, [0, 1], [0, 160]);
+
   return (
     <section
       ref={ref}
       className="relative flex min-h-screen flex-col justify-center overflow-hidden px-8 pb-32 pt-24 md:px-12 sm:pb-40 sm:pt-28"
     >
+      {/* Floating decorative elements */}
+      <motion.div
+        className="pointer-events-none absolute right-[10%] top-[15%] h-64 w-64 rounded-full blur-3xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 6%, transparent)', y: float1Y, x: float1X }}
+        aria-hidden
+      />
+      <motion.div
+        className="pointer-events-none absolute left-[5%] bottom-[20%] h-48 w-48 rounded-full blur-3xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-hover) 6%, transparent)', y: float2Y }}
+        aria-hidden
+      />
+      <motion.div
+        className="pointer-events-none absolute right-[20%] bottom-[10%] h-32 w-32 rounded-full blur-2xl"
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 8%, transparent)', y: float3Y }}
+        aria-hidden
+      />
+
       <motion.div className="relative mx-auto max-w-6xl" style={{ opacity: bgOpacity }}>
         <motion.h1
-          className="max-w-4xl text-5xl font-semibold leading-[1.1] tracking-[-0.03em] sm:text-6xl md:text-[4.5rem] lg:text-[5rem]"
+          className="max-w-4xl text-5xl leading-[1.4] tracking-tight sm:text-6xl md:text-[4.5rem] lg:text-[5rem]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           style={{ y: titleY }}
         >
-          <span className="text-gradient">Hi I&apos;m Tap, I build</span>
+          <span className="font-[family-name:var(--font-playfair)] font-normal">Hi I&apos;m Tap, I build</span>
           <br />
           <motion.span
-            className="rounded-md px-1"
+            className="px-1 font-[family-name:var(--font-playfair)] font-bold"
             initial={{ backgroundSize: "0% 100%" }}
             animate={{ backgroundSize: "100% 100%" }}
             transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
@@ -44,7 +67,11 @@ export default function Hero() {
             }}
           >digital products</motion.span>
           <br />
-          <span className="text-gradient">that turn complexity into clarity.</span>
+          <span className="font-[family-name:var(--font-playfair)] font-normal">that turn </span>
+          <span className="font-[family-name:var(--font-playfair)] font-bold italic">complexity </span>
+          <span className="font-[family-name:var(--font-playfair)] font-normal">into </span>
+          <span className="font-[family-name:var(--font-playfair)] font-bold italic">clarity</span>
+          <span className="font-[family-name:var(--font-playfair)]">.</span>
         </motion.h1>
 
         <motion.p
@@ -68,7 +95,7 @@ export default function Hero() {
         >
           <MagneticButton
             href="#work"
-            className="inline-block rounded-lg bg-[var(--color-accent-warm)] px-8 py-4 text-base font-medium text-white transition-colors hover:bg-[var(--color-accent-hover)]"
+            className="inline-block rounded-full bg-[var(--color-accent-warm)] px-8 py-4 text-base font-medium text-white transition-all hover:scale-105 hover:opacity-90"
             strength={0.35}
           >
             See my work
