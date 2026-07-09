@@ -74,9 +74,7 @@ export default function PreviousWork() {
             <motion.div
               key={role.title + role.company}
               className={`card-ring group relative overflow-hidden rounded-2xl bg-[var(--color-card)] p-7 sm:p-9 transition-transform duration-300 hover:-translate-y-1.5 ${
-                role.size === "large"
-                  ? "sm:col-span-2 lg:col-span-2 lg:row-span-2"
-                  : ""
+                role.size === "large" ? "sm:col-span-2" : ""
               }`}
               variants={cardVariants}
               initial="hidden"
@@ -107,7 +105,7 @@ export default function PreviousWork() {
                 </h3>
                 <p className="mt-2 text-sm text-[var(--color-muted)]">{role.company}</p>
                 <p
-                  className={`mt-5 font-light leading-relaxed text-[var(--color-muted)] ${
+                  className={`mt-5 leading-relaxed text-[var(--color-fg)] ${
                     role.size === "large"
                       ? "text-lg max-w-xl"
                       : "text-sm"

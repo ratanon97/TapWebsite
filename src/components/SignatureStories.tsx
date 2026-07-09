@@ -17,6 +17,9 @@ export type SignatureStoryCard = {
 export default function SignatureStories({ stories }: { stories: SignatureStoryCard[] }) {
   if (stories.length === 0) return null;
 
+  // With a single story, feature it full-width instead of leaving a sparse grid
+  const featured = stories.length === 1;
+
   return (
     <section
       id="stories"
@@ -50,7 +53,7 @@ export default function SignatureStories({ stories }: { stories: SignatureStoryC
           The process behind the work.
         </motion.h2>
         <motion.p
-          className="mt-4 max-w-xl text-base font-light leading-relaxed text-[var(--color-muted)]"
+          className="mt-4 max-w-xl text-base leading-relaxed text-[var(--color-muted)]"
           variants={slideIn}
           initial="hidden"
           whileInView="visible"
@@ -60,7 +63,11 @@ export default function SignatureStories({ stories }: { stories: SignatureStoryC
           Long-form pieces on the projects, tensions, and lessons that a line on a CV can&apos;t carry.
         </motion.p>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className={`mt-14 grid grid-cols-1 gap-6 ${
+            featured ? "" : "sm:grid-cols-2 lg:grid-cols-3"
+          }`}
+        >
           {stories.map((story, i) => (
             <motion.div
               key={story.slug}
@@ -76,7 +83,9 @@ export default function SignatureStories({ stories }: { stories: SignatureStoryC
             >
               <Link
                 href={`/stories/${story.slug}`}
-                className="card-ring group relative flex h-full flex-col overflow-hidden rounded-2xl bg-[var(--color-card)] p-7 sm:p-9 transition-transform duration-300 hover:-translate-y-1.5"
+                className={`card-ring group relative flex h-full flex-col overflow-hidden rounded-2xl bg-[var(--color-card)] transition-transform duration-300 hover:-translate-y-1.5 ${
+                  featured ? "p-8 sm:p-12" : "p-7 sm:p-9"
+                }`}
               >
                 <div className="absolute left-0 top-0 h-full w-1 bg-transparent transition-all duration-300 group-hover:bg-[var(--color-accent-warm)]" />
 
@@ -84,25 +93,45 @@ export default function SignatureStories({ stories }: { stories: SignatureStoryC
                   {story.project} · {story.readingTime}
                 </p>
                 <h3
-                  className="mt-3 font-[family-name:var(--font-playfair)] text-2xl tracking-tight sm:text-3xl"
+                  className={`mt-3 font-[family-name:var(--font-playfair)] tracking-tight ${
+                    featured
+                      ? "max-w-3xl text-3xl sm:text-4xl lg:text-5xl"
+                      : "text-2xl sm:text-3xl"
+                  }`}
                   style={{ lineHeight: 1.15, letterSpacing: "-0.01em" }}
                 >
                   {story.title}
                 </h3>
-                <p className="mt-4 text-sm font-light leading-relaxed text-[var(--color-muted)]">
+                <p
+                  className={`mt-4 leading-relaxed text-[var(--color-fg)] ${
+                    featured ? "max-w-2xl text-base" : "text-sm"
+                  }`}
+                >
                   {story.summary}
                 </p>
 
                 <div className="mt-auto pt-6">
-                  <div className="transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
+                  <div
+                    className={
+                      featured
+                        ? "border-l-2 border-[var(--color-accent-warm)] pl-4"
+                        : "transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
+                    }
+                  >
                     <p className="text-xs font-medium uppercase tracking-wider text-[var(--color-muted)]">
                       Takeaway
                     </p>
-                    <p className="mt-1 text-sm font-light italic text-[var(--color-fg)]">
+                    <p className="mt-1 text-sm italic text-[var(--color-fg)]">
                       {story.lesson}
                     </p>
                   </div>
-                  <p className="mt-4 text-sm font-medium text-[var(--color-accent-warm)] transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100">
+                  <p
+                    className={`mt-4 text-sm font-medium text-[var(--color-accent-warm)] ${
+                      featured
+                        ? ""
+                        : "transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100"
+                    }`}
+                  >
                     Read the story →
                   </p>
                 </div>

@@ -36,7 +36,7 @@ export default function About() {
 
         <div className="mt-14 max-w-2xl space-y-7 border-l-2 border-[var(--color-accent-warm)] pl-10">
           <motion.p
-            className="text-xl font-light leading-relaxed text-[var(--color-muted)]"
+            className="text-xl leading-relaxed text-[var(--color-fg)]"
             variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
@@ -50,7 +50,7 @@ export default function About() {
             and chemicals industries.
           </motion.p>
           <motion.p
-            className="text-xl font-light leading-relaxed text-[var(--color-muted)]"
+            className="text-xl leading-relaxed text-[var(--color-fg)]"
             variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
@@ -63,7 +63,7 @@ export default function About() {
             analytics dashboards &mdash; I focus on making the complex feel simple.
           </motion.p>
           <motion.p
-            className="text-xl font-light leading-relaxed text-[var(--color-muted)]"
+            className="text-xl leading-relaxed text-[var(--color-fg)]"
             variants={fadeInRight}
             initial="hidden"
             whileInView="visible"

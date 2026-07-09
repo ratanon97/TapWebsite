@@ -41,12 +41,12 @@ export default function CurrentWork() {
             Associate Technical Product Manager at Omise
           </h2>
           <p className="mt-3 text-sm text-[var(--color-muted)]">At Omise since June 2026</p>
-          <p className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-[var(--color-muted)]">
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[var(--color-fg)]">
             Leading Omise&rsquo;s Wallet as a Service (WaaS) product, owning
             strategy, roadmap, and execution across product, engineering, and
             partner teams.
           </p>
-          <ul className="mt-8 max-w-2xl space-y-3 pl-5 text-sm leading-relaxed text-[var(--color-muted)]">
+          <ul className="mt-8 max-w-2xl space-y-3 pl-5 text-sm leading-relaxed text-[var(--color-fg)]">
             {[
               "Driving the Wallet as a Service (WaaS) product end-to-end, defining strategy, roadmap, and partner integrations for open-loop digital wallet solutions",
             ].map((item, i) => (

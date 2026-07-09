@@ -19,9 +19,24 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tapwebsite.vercel.app"),
   title: "Tap Suksumrun - Product Manager",
   description:
     "Product Manager passionate about building great products and solving real problems.",
+  openGraph: {
+    title: "Tap Suksumrun - Product Manager",
+    description:
+      "Product Manager passionate about building great products and solving real problems.",
+    url: "/",
+    siteName: "Tap Suksumrun",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tap Suksumrun - Product Manager",
+    description:
+      "Product Manager passionate about building great products and solving real problems.",
+  },
 };
 
 export default function RootLayout({

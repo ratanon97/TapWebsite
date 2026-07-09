@@ -51,7 +51,7 @@ export default function FieldNotes({ notes }: { notes: FieldNoteRow[] }) {
         </div>
 
         <motion.p
-          className="mt-8 max-w-2xl text-lg font-light leading-relaxed text-[var(--color-muted)]"
+          className="mt-8 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]"
           variants={slideIn}
           initial="hidden"
           whileInView="visible"

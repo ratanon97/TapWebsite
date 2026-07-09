@@ -69,7 +69,7 @@ export default function Contact() {
           >
             Let&apos;s connect.
           </h2>
-          <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-[var(--color-muted)]">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-muted)]">
             Whether you have a project in mind, want to chat about product, or
             just want to say hi &mdash; I&apos;d love to hear from you.
           </p>

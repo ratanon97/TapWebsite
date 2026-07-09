@@ -47,7 +47,7 @@ export default function Hero() {
 
       <motion.div className="relative mx-auto max-w-6xl" style={{ opacity: bgOpacity }}>
         <motion.h1
-          className="max-w-4xl text-5xl leading-[1.4] tracking-tight sm:text-6xl md:text-[4.5rem] lg:text-[5rem]"
+          className="max-w-4xl text-4xl leading-[1.2] tracking-tight sm:text-6xl md:text-[4.5rem] lg:text-[5rem]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -87,7 +87,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          className="mt-16"
+          className="mt-10 sm:mt-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}

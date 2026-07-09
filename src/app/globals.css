@@ -160,7 +160,7 @@ body {
   color: var(--color-fg);
   font-size: 1.125rem;
   line-height: 1.75;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .story-prose > * + * {
@@ -188,7 +188,7 @@ body {
 }
 
 .story-prose p {
-  color: var(--color-muted);
+  color: var(--color-fg);
 }
 
 .story-prose strong {
