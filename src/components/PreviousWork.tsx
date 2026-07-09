@@ -58,7 +58,7 @@ export default function PreviousWork() {
       {/* Atmospheric depth layer */}
       <div
         className="pointer-events-none absolute left-[-10%] top-[10%] h-96 w-96 rounded-full blur-3xl"
-        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-hover) 7%, transparent)' }}
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 7%, transparent)' }}
         aria-hidden
       />
       <div
@@ -118,7 +118,7 @@ export default function PreviousWork() {
 
                 {/* Tags revealed on hover */}
                 <div className="mt-auto pt-4">
-                  <div className="flex flex-wrap gap-2 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="flex flex-wrap gap-2 transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
                     {role.tags.map((tag) => (
                       <span
                         key={tag}

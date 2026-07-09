@@ -51,8 +51,11 @@ export default function Tools() {
               }}
             >
               {tool.name}
-              {/* Tooltip */}
-              <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[var(--color-card)] px-3 py-1 text-xs font-sans text-[var(--color-fg)] opacity-0 shadow-lg ring-1 ring-[var(--color-border)] transition-opacity duration-200 group-hover:opacity-100">
+              {/* Context inline on touch screens, tooltip on desktop hover */}
+              <span className="ml-1.5 font-sans text-[11px] normal-case opacity-70 lg:hidden">
+                · {tool.context}
+              </span>
+              <span className="pointer-events-none absolute -top-9 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded-md bg-[var(--color-card)] px-3 py-1 text-xs font-sans text-[var(--color-fg)] opacity-0 shadow-lg ring-1 ring-[var(--color-border)] transition-opacity duration-200 group-hover:opacity-100 lg:block">
                 {tool.context}
               </span>
             </motion.span>

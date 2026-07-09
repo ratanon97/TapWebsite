@@ -36,7 +36,7 @@ export default function Hero() {
       />
       <motion.div
         className="pointer-events-none absolute left-[5%] bottom-[20%] h-48 w-48 rounded-full blur-3xl"
-        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-hover) 6%, transparent)', y: float2Y }}
+        style={{ backgroundColor: 'color-mix(in oklab, var(--color-accent-warm) 6%, transparent)', y: float2Y }}
         aria-hidden
       />
       <motion.div
@@ -82,7 +82,7 @@ export default function Hero() {
           style={{ y: subtitleY }}
         >
           I&apos;m a Product Manager who loves turning complex problems into
-          simple, delightful experiences. I care deeply about &ldquo;why&rdquo;
+          simple, delightful experiences. I care deeply about the &ldquo;why&rdquo;
           behind what we build.
         </motion.p>
 
@@ -95,7 +95,7 @@ export default function Hero() {
         >
           <MagneticButton
             href="#work"
-            className="inline-block rounded-full bg-[var(--color-accent-warm)] px-8 py-4 text-base font-medium text-white transition-all hover:scale-105 hover:opacity-90"
+            className="btn-glow inline-block rounded-full px-8 py-4 text-base font-semibold text-[#3A1F05] transition-transform hover:scale-[1.03]"
             strength={0.35}
           >
             See my work

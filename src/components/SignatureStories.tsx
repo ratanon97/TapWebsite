@@ -94,7 +94,7 @@ export default function SignatureStories({ stories }: { stories: SignatureStoryC
                 </p>
 
                 <div className="mt-auto pt-6">
-                  <div className="translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
                     <p className="text-xs font-medium uppercase tracking-wider text-[var(--color-muted)]">
                       Takeaway
                     </p>
@@ -102,7 +102,7 @@ export default function SignatureStories({ stories }: { stories: SignatureStoryC
                       {story.lesson}
                     </p>
                   </div>
-                  <p className="mt-4 text-sm font-medium text-[var(--color-accent-warm)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <p className="mt-4 text-sm font-medium text-[var(--color-accent-warm)] transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100">
                     Read the story →
                   </p>
                 </div>

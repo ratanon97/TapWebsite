@@ -88,7 +88,7 @@ export default function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] px-6 py-3 text-sm font-medium text-[var(--color-fg)] transition-all hover:scale-105 hover:border-[var(--color-accent-hover)] hover:bg-[var(--color-accent-hover)] hover:text-white"
+                  className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] px-6 py-3 text-sm font-medium text-[var(--color-fg)] transition-all hover:scale-105 hover:border-[var(--color-accent-warm)] hover:bg-[var(--color-accent-warm)] hover:text-[#3A1F05]"
                   strength={0.25}
                 >
                   <link.icon />
