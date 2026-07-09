@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tapwebsite.vercel.app"),
+  metadataBase: new URL("https://tapwebsite-eta.vercel.app"),
   title: "Tap Suksumrun - Product Manager",
   description:
     "Product Manager passionate about building great products and solving real problems.",
