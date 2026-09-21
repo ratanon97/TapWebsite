@@ -1,0 +1,93 @@
+---
+title: "The fraud block we shipped and didn't turn on"
+slug: "wallet-blackwatch-integration"
+date: "2026-09-21"
+project: "Omise"
+tags: ["fintech", "fraud-prevention", "compliance", "rollout"]
+summary: "Hundreds of thousands of wallet users, a regulator's mule-account mandate, six months of meetings, and a test in production that showed me the block was the easy part. Told stage by stage, so I can find the lessons again."
+lesson: "Block by machine, terminate by human. The code took twenty days; the six months around it were compliance and partner conversations, and the switch only flips when the support desk knows what to say."
+heroQuote: "We scanned the QR twice. The second screen was the one nobody had designed."
+featured: true
+---
+
+I've written this one as a lifecycle rather than a story arc, because I keep going back to it. Each stage ends with the thing we still stand on and the thing I got wrong.
+
+## 1. Discovery (March)
+
+Mule accounts are real people's accounts, rented or sold to a fraud ring to move stolen money. In 2026 the Bank of Thailand made every e-money issuer responsible for screening its own users against the published lists, not just the banks.
+
+We were screening. Compliance exported active users partner by partner, ran them through an internal matching tool another team had built for payout recipients, got a spreadsheet back, and asked engineering to run scripts against it. It worked, in the sense that a smoke alarm you test every Monday works.
+
+The gap was time. A scan at nine in the morning tells you who is on the list. At 9:42 one of them scans a merchant QR and the payment goes through, because the payment path has no idea the scan happened. Detection and prevention were two separate systems, and only one of them ran in real time.
+
+In March I sat down with our wallet tech lead and the dev team to size it. Three options: a nightly batch, a check inside the payment at the moment we verify the QR, or both. We picked the payment check. Twenty days of build, they said, once one blocker cleared: the matching tool required a bank account number, and a wallet user doesn't have one. We had a national ID and a name.
+
+**Foundation:** The check lives where the money moves. Screening happens inside the payment, on every payment, on every partner wallet.
+
+**Lesson:** Size the blocker, not the build. The code was twenty days. The identity problem underneath it took two months and most of the people in the building.
+
+## 2. Requirements (April)
+
+In April I met the payout PM and the screening team's lead to work out how their tool could accept an ID instead of an account number. That became the first requirement: the screening service gets a wallet-shaped front door that takes a national ID and a name, and the existing payout screening is left untouched.
+
+Same week, a manual scan of both partners' users came back. One partner had forty-odd hits, about half of them exact ID matches. The other had twenty-odd, and fourteen of those matched on name only with a different ID. Fourteen people sharing a full Thai name is not a coincidence. That's a data problem. We terminated the exact matches, sent the name-only ones to enhanced due diligence, and I phoned each partner to walk them through it. One partner sent us a photo of a customer's actual ID card to prove their records were right. They were. The bad IDs had come in through the list ingestion.
+
+That round set the scope. Screen the customer at the moment of payment, and only there. Not at onboarding, because a new user with no card and no balance can't move money yet, and the payment check catches them the first time they try. Not the merchant, because the QR standard carries no merchant identity to screen. And never terminate automatically. The fourteen name-only hits had just shown us the national mule database itself carries bad data. A wrong block costs a customer one payment and a phone call. A wrong termination ends a real person's account on the strength of a list we now knew we couldn't fully trust. So a block can be a machine's decision. A termination is a person's.
+
+**Foundation:** Block by machine, terminate by human. A match stops a payment. Only compliance ends a relationship, because the list can be wrong and a termination can't be undone quietly.
+
+**Lesson:** Run the manual process once more before you automate it. The scan taught us the lists themselves carry bad data, and that changed what "a match" was allowed to mean.
+
+## 3. Design (May to June)
+
+In May I walked the screening team's engineers through what we needed. Their architect asked why we wanted to call them on every single payment when the lists update twice a month. Fair question. My answer was that the point wasn't the list, it was the person newly added to it, and I'd rather pay the overhead than explain the gap. Their payout engineer asked what happens when the screening service is down and I hadn't written that down. I went away and wrote it down.
+
+The design that came out of that month split the work in two. The screening service owns the lists and the matching: it says what matched and how strongly. Our side owns what a match means for a payment. The contract between them is a list of what was found, nothing more, so either side can change its internals without touching the other.
+
+In June we took the design to a review committee, the first time the company had run one. The committee agreed with me: match on national ID only, exact match. One ID, one person, fewest false positives, least casework for my team. They also asked why we screened the customer but not the merchant, and I had the answer from April. And they told me the screening service had no authentication and lived in a different cluster, so I owed them an auth design too.
+
+**Foundation:** Two domains, one contract. They match, we decide. That split is why a regulator renaming its tiers in August cost us zero lines of code.
+
+**Lesson:** Bring the outage question yourself. Write down what the payment does when the fraud check can't answer before you write down what it does when it can.
+
+## 4. Discussion (June to August)
+
+Three days after the committee I took the same design to compliance and lost. Our head of compliance wanted ID and name together, because the regulator's own guidance says a flagged person should be able to contest the match, and because a repeat offender with a borrowed ID is invisible to an ID-only check. I argued false positives. I lost, and on reflection deserved to. Name became a required field. The engineering decision from Thursday was undone on Monday.
+
+In August our head of compliance, a compliance specialist and the screening service's product owner spent an hour on which regulator gets told what when we find a mule. The rule we landed on: if we blocked them before any service was performed, there's nothing to report. If they were already our customer, there is. That shaped what we log and what we don't.
+
+The same month the regulator renamed its classification tiers mid-build. Because of the split from May, our side didn't change a line.
+
+**Foundation:** Compliance owns what a match means for a person. Engineering owns what it costs. When they disagree, compliance wins and engineering gets told why.
+
+**Lesson:** A design review is not a decision. I walked out of the committee thinking the matching rule was settled. It was settled when the person accountable for the regulator said so.
+
+## 5. Build (July to September)
+
+We built it dark. The integration sits behind three stacked switches: observe, enforce, lock. Observe calls the screening service on every payment and records the answer. Enforce turns a match into a declined payment. Lock, on top of enforce, freezes the card in the same action as the decline, so a flagged customer can't simply retry. Lock does nothing without enforce. Both the integration and the auto-lock are deployed.
+
+Last week our QA lead and I ran a real scan in production with a flagged test account and all three switches on. Scan one: a generic "cannot process payment". Scan two: the partner's account-locked screen, because our lock had fired on the first try and the second attempt never reached the fraud check. The partner on the call asked the obvious question. Can you give us a different message, so our support team knows this is a fraud hold and not a broken card?
+
+A reasonable ask. Also the whole problem in one sentence. A distinct message tells the user they matched a mule list. Tell them, and you've told the fraud ring which account is burned. Don't tell them, and a real person with a common name gets a dead card and a support agent who can't explain why. I told the partner I'd take it to compliance rather than say yes on a call.
+
+**Foundation:** Ship behind layered switches. Observe first, enforce second, lock last, and each one only works if the one below it is on.
+
+**Lesson:** Test in production as the partner sees it, not as the log sees it. The log said one clean rejection. The customer would have seen two different screens, and nobody had designed the second one.
+
+## 6. Go live (September onward)
+
+Today only observe is on. Every payment is screened and logged, nothing is blocked, nothing is locked. I read the log. When it shows a real match, we flag the account and I notify the CS team lead, who terminates it. The human step that the lock will eventually automate is happening by hand, on purpose, while we watch what the data looks like.
+
+My tech lead wanted to fold enforcement into a deploy already going out that week. I said hold until October. Before the switch goes on, each partner gets briefed on the new decline and the two-attempt behaviour, confirms their app survives an error code it has never seen, and has a script for the day a flagged customer calls. And I owe one partner a conversation I haven't had yet: when lock is on, it locks on any confirmed match, whatever severity tier the list assigns. They need to hear that from me before they read it in a support ticket.
+
+Compliance decides what the message says. The partner decides what their screen shows. I decide when the switch goes on, and not before those two have.
+
+**Foundation:** Enforcement is a partner conversation, not a deploy. The flag flips when the support desk knows what to say, not when the code is ready.
+
+**Lesson:** The code took twenty days. Everything around it took six months, and most of that was meetings where I was wrong about something.
+
+## What I'd keep
+
+I still think the check belongs inside the payment. I no longer think I get to decide what the block says to the person it stops. That belongs to compliance, to the partner whose logo is on the app, and to whoever is holding the phone.
+
+The switch is still off. It goes on in October, when someone on each partner's support desk knows what to say. Until then it watches, and I read the log.

@@ -48,7 +48,10 @@ export default function CurrentWork() {
           </p>
           <ul className="mt-8 max-w-2xl space-y-3 pl-5 text-sm leading-relaxed text-[var(--color-fg)]">
             {[
-              "Driving the Wallet as a Service (WaaS) product end-to-end, defining strategy, roadmap, and partner integrations for open-loop digital wallet solutions",
+              "Defined the Wallet-as-a-Service product strategy: ran 6 stakeholder interviews and a cross-functional strategy workshop that secured leadership consensus to fund the wallet as a platform rather than project-by-project, protecting ~THB 100M of e-money float and setting the personal-loan vertical as the near-term growth focus",
+              "Authored the vision, value proposition, strategy, outcomes and roadmap package behind the Q4 2026 budget ask, structured as three separately funded streams (Run, Deliver, Productize) so platform work is never squeezed into delivery deadlines",
+              "Led a code-evidence \"80/20\" analysis of partner onboarding: decomposed 62 launch tickets, traced recurring cost to ~30 code sites across 4 of 22 services, and proposed a plan to cut per-partner engineering from 3\u20134 months to an estimated 2\u20134 weeks",
+              "Delivered real-time mule-account screening inside the wallet payment flow for 250K+ users across two partner wallets, in response to the Bank of Thailand mandate; owned requirements, the company's first design-review committee, compliance alignment, and a staged observe / enforce / lock rollout",
             ].map((item, i) => (
               <motion.li
                 key={i}
