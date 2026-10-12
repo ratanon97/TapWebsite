@@ -199,3 +199,53 @@ the current chapter folio at right ("II · The fraud block"), updated by an
 IntersectionObserver over `[data-chapter]`. The theme toggle sits beside the
 folio. No CTA in the chrome: the grammar forbids it and the contents list on
 the title page is the navigation.
+
+---
+
+## Inner pages: the stories index and each story (2026-10-12)
+
+`[Tap]` asked for the scroll-craft treatment on `/stories` and on each
+story page, and for two journey fixes: the name in the running head goes
+back to the front page, and the old nav's "Get in touch" button no longer
+loses its label after client navigation (the engine stylesheet's unlayered
+`a { color: inherit }` was beating Tailwind's layered utility). Everything
+else below is authored from the front page's own decisions, not interviewed:
+the inner pages extend this build rather than starting a new one, so they
+inherit its grammar, tokens, running head and colophon. No new fingerprint
+row: a different page of the same site is not a different site.
+
+**Journey.** Arrive, read, keep reading. Three beats, so the pages are short
+on purpose (index 1.6 viewport-heights at 1440x900; the long story 8.5).
+
+**Feeling curve.**
+
+```
+Index
+0  Title    Stillness    "Field notes." on paper, the deck, the real count
+1  Rows     Attention    one ruled row per story; the story's own line wipes in between title and summary
+2  Close    Resolve      the colophon, "Back to the front page" as running text
+
+Story
+0  Title    Stillness    mast line (All stories · project · date · reading time), the title, the summary
+1  Quote    Tension      hard cut to the surface ground; the hero line wipes across
+2  Body     Reading      sticky facts and the lesson in the margin; headings become the folio; decisions carry the front page's hairline rule
+3  Close    Resolve      Keep reading rows, then the colophon
+```
+
+**Score.** Index: `flow/in` > `reveal` (one per row, inside the row) >
+`flow/in`. Story: `flow/in` > `reveal` (own act) > `flow/in` per block >
+`flow/in`. No pin, no scrub, no count. The grammar's bans hold: no fixed bar,
+no CTA island, no drift, hard-cut grounds (canvas > surface > canvas).
+
+**Running head.** Same chrome. The folio now reads from positions (the last
+marker above a line at 48% of the viewport) instead of intersection
+crossings, so a story's headings can be markers and a fast scroll cannot
+skip one. The name links to `/` on inner pages and `#top` on the front page.
+
+**Verified (headless Chrome, 2026-10-12).** `lab/inner.mjs`: front page >
+Read the story > story > name > front page; index > story > Back to the front
+page; theme toggle on a story; no link whose colour equals its background at
+any stop; folio follows headings both ways; the quote wipe opens; no console
+errors. `lab/walk.mjs` sheets for the index and both stories at 1440x900,
+390x844 and dark. Keyboard order visible at every stop (with a settle long
+enough for smooth scroll). No-JS: nothing hidden. Not verified: a real phone.

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { COUNT_WORDS, LEDGER } from "@/lib/ledger";
+import Facts from "./Facts";
 
 /*
  * The chapters of the home page. Server components: static, semantic markup
@@ -35,19 +36,6 @@ function Intertitle({
         </div>
       </div>
     </header>
-  );
-}
-
-function Facts({ rows }: { rows: Array<[string, string]> }) {
-  return (
-    <dl className="facts" data-sc-in data-sc-stagger="50">
-      {rows.map(([k, v]) => (
-        <div className="facts__row" key={k}>
-          <dt>{k}</dt>
-          <dd className="sc-nums">{v}</dd>
-        </div>
-      ))}
-    </dl>
   );
 }
 

@@ -67,3 +67,7 @@ constrain yours.
   in the margin; a colophon close inside the pinned peak; the decision ledger
   (margin panel that stamps as you pass, then fills the page); an inverted
   ground at the peak.
+- tap-editorial's inner pages (`/stories`, `/stories/<slug>`, 2026-10-12)
+  extend the same row: same running head (name links to the front page),
+  ruled index rows with a reveal per row, a sticky facts-and-lesson margin on
+  each story, a colophon close. No new row; see the brief's last section.

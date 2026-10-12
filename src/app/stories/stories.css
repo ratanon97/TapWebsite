@@ -1,0 +1,227 @@
+/* ============================================================================
+   stories.css: the inner pages (the stories index and each story).
+
+   Same grammar as the front page, chaptered editorial: a running head, type
+   on paper, hard cuts between grounds, the close as a colophon. These pages
+   are shorter than the front page because their journey is shorter: arrive,
+   read, keep reading. Tokens and the engine come from editorial.css and
+   scrollcraft.css; this file only styles the inner pages' own markup.
+   ========================================================================== */
+
+/* ------------------------------------------------------------ page title --
+   Shorter than the front page's title page: there is no contents list to
+   fill the fold, and the reader came here to read, not to arrive. */
+.title--page {
+  min-height: 0;
+  padding-block: clamp(7rem, 16vh, 11rem) clamp(3.5rem, 8vh, 6rem);
+}
+.title--page .title__mast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--sc-3);
+}
+.title--page .title__h1 {
+  grid-column: 1 / span 10;
+  max-width: 18ch;
+}
+.title--page .title__deck { max-width: 52ch; }
+.title__project { color: var(--sc-accent); }
+
+/* ------------------------------------------------------------------ rows --
+   One ruled row per story: the date and project in the margin, the title and
+   summary in the measure, the story's own line wiping in between them. */
+.index { padding-block: var(--sc-7) var(--sc-section); }
+.index__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+.index__row {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--sc-5);
+  row-gap: var(--sc-4);
+  padding-block: var(--sc-7);
+  border-top: 1px solid var(--sc-hairline);
+}
+.index__row:last-child { border-bottom: 1px solid var(--sc-hairline); }
+.index__when {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: var(--sc-t-sm);
+  line-height: 1.5;
+  color: var(--sc-ink-soft);
+}
+.index__main {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--sc-5);
+}
+.index__head { display: grid; gap: var(--sc-3); }
+.index__title {
+  font-weight: 400;
+  max-width: 22ch;
+}
+.index__title a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--sc-d-fast) var(--sc-ease-out);
+}
+.index__title a:hover { color: var(--sc-accent); }
+.index__summary {
+  margin: 0;
+  max-width: 56ch;
+  color: var(--sc-ink-soft);
+  font-size: var(--sc-t-base);
+  line-height: var(--sc-leading-body);
+  text-wrap: pretty;
+}
+.pull--index {
+  margin-block: 0;
+  max-width: 28ch;
+}
+.pull--index .pull__quote { font-size: var(--sc-t-xl); }
+.index__meta {
+  margin: 0;
+  font-size: var(--sc-t-sm);
+  color: var(--sc-ink-soft);
+}
+.index__list--keep .index__row { padding-block: var(--sc-5); }
+.index__list--keep .index__main { gap: var(--sc-3); }
+
+@media (min-width: 1100px) {
+  .index__when { grid-column: 1 / span 3; }
+  .index__main { grid-column: 4 / span 7; }
+}
+@media (min-width: 720px) and (max-width: 1099px) {
+  .index__when { grid-column: 1 / span 3; }
+  .index__main { grid-column: 4 / span 9; }
+}
+
+/* ----------------------------------------------------------------- story -- */
+.story { padding-top: var(--sc-6); }
+.story__side { display: grid; gap: var(--sc-6); align-content: start; }
+.story__label {
+  font-size: var(--sc-t-xs);
+  letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase;
+  color: var(--sc-ink-soft);
+  margin: 0 0 var(--sc-2);
+}
+.story__lesson-text {
+  margin: 0;
+  font-family: var(--sc-font-display);
+  font-style: italic;
+  font-size: var(--sc-t-lg);
+  line-height: 1.3;
+  color: var(--sc-ink);
+  max-width: 26ch;
+  text-wrap: pretty;
+}
+.tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sc-1) var(--sc-2);
+  font-size: var(--sc-t-sm);
+  color: var(--sc-ink-soft);
+}
+.tags li + li::before { content: "· "; }
+
+/* The article body: the front page's prose measure, with headings in the
+   display face. Paragraphs that open with a bold run are the story's standing
+   decisions (the Foundation and Lesson lines), and they carry the same
+   hairline rule the front page draws beside its decisions. */
+.article {
+  max-width: 62ch;
+  font-size: var(--sc-t-base);
+  line-height: var(--sc-leading-body);
+  color: var(--sc-ink);
+  text-wrap: pretty;
+}
+/* Block spacing is set here and only here, by position: one gap between
+   blocks, a larger one above a heading, none above the first block. */
+.article > * { margin: 0; }
+.article > * + * { margin-top: 1.3em; }
+.article > * + :is(h2, h3) { margin-top: 2.4em; }
+.article > :is(h2, h3) + * { margin-top: 0.7em; }
+.article h2,
+.article h3 {
+  font-family: var(--sc-font-display);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: var(--sc-track-snug);
+  text-wrap: balance;
+}
+.article h2 { font-size: var(--sc-t-xl); }
+.article h3 { font-size: var(--sc-t-lg); }
+.article p:has(> strong:first-child) {
+  padding-left: var(--sc-5);
+  border-left: 1px solid var(--sc-accent);
+}
+.article > p:has(> strong:first-child) + p:has(> strong:first-child) { margin-top: 1em; }
+.article strong { font-weight: 560; }
+.article em { font-style: italic; }
+.article a {
+  color: var(--sc-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.24em;
+  transition: color var(--sc-d-fast) var(--sc-ease-out);
+}
+.article a:hover { color: var(--sc-ink); }
+.article blockquote {
+  margin: 0;
+  padding-left: var(--sc-5);
+  border-left: 1px solid var(--sc-accent);
+  font-family: var(--sc-font-display);
+  font-style: italic;
+  font-size: var(--sc-t-lg);
+  line-height: 1.3;
+}
+.article ul,
+.article ol { padding-left: 1.4em; margin: 0; }
+.article li + li { margin-top: 0.5em; }
+.article li::marker { color: var(--sc-accent); }
+.article code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: color-mix(in oklab, var(--sc-ink) 8%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: var(--sc-r-sm);
+}
+.article hr {
+  border: 0;
+  height: 1px;
+  background: var(--sc-hairline);
+  margin-block: 2.4em;
+}
+
+/* ----------------------------------------------------------------- close -- */
+.close { padding-block: var(--sc-section); }
+.close__grid { display: grid; gap: var(--sc-8); }
+.keep__label {
+  font-family: var(--sc-font-display);
+  font-weight: 400;
+  font-size: var(--sc-t-xl);
+  line-height: 1.1;
+  margin: 0 0 var(--sc-5);
+}
+.colophon--page { margin-top: 0; }
+
+/* ---------------------------------------------------------------- mobile -- */
+@media (max-width: 719px) {
+  .title--page { padding-block: 6rem 3rem; }
+  .title--page .title__h1 { max-width: none; }
+  .index { padding-top: var(--sc-6); }
+  .index__row { padding-block: var(--sc-6); row-gap: var(--sc-3); }
+  .index__main { gap: var(--sc-4); }
+  .pull--index { max-width: none; }
+  .story { padding-top: var(--sc-5); }
+  .story .pull { max-width: none; }
+  .story__side { gap: var(--sc-5); }
+  .close__grid { gap: var(--sc-7); }
+}
