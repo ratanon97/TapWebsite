@@ -24,7 +24,7 @@ In March I sat down with our wallet tech lead and the dev team to size it. Three
 
 **Foundation:** The check lives where the money moves. Screening happens inside the payment, on every payment, on every partner wallet.
 
-**Lesson:** Size the blocker, not the build. The code was twenty days. The identity problem underneath it took two months and most of the people in the building.
+**Lesson:** We sized the build and not the blocker. The code was twenty days. The identity problem underneath it took two months and most of the people in the building.
 
 ## 2. Requirements (April)
 
@@ -32,7 +32,7 @@ In April I met the payout PM and the screening team's lead to work out how their
 
 Same week, a manual scan of both partners' users came back. One partner had forty-odd hits, about half of them exact ID matches. The other had twenty-odd, and fourteen of those matched on name only with a different ID. Fourteen people sharing a full Thai name is not a coincidence. That's a data problem. We terminated the exact matches, sent the name-only ones to enhanced due diligence, and I phoned each partner to walk them through it. One partner sent us a photo of a customer's actual ID card to prove their records were right. They were. The bad IDs had come in through the list ingestion.
 
-That round set the scope. Screen the customer at the moment of payment, and only there. Not at onboarding, because a new user with no card and no balance can't move money yet, and the payment check catches them the first time they try. Not the merchant, because the QR standard carries no merchant identity to screen. And never terminate automatically. The fourteen name-only hits had just shown us the national mule database itself carries bad data. A wrong block costs a customer one payment and a phone call. A wrong termination ends a real person's account on the strength of a list we now knew we couldn't fully trust. So a block can be a machine's decision. A termination is a person's.
+That round set the scope. We screen the customer at the moment of payment and nowhere else. Onboarding was out, because a new user with no card and no balance can't move money yet, and the payment check catches them the first time they try. The merchant was out, because the QR standard carries no merchant identity to screen. And nothing terminates automatically. The fourteen name-only hits had just shown us the national mule database itself carries bad data. A wrong block costs a customer one payment and a phone call. A wrong termination ends a real person's account on the strength of a list we now knew we couldn't fully trust.
 
 **Foundation:** Block by machine, terminate by human. A match stops a payment. Only compliance ends a relationship, because the list can be wrong and a termination can't be undone quietly.
 
@@ -46,7 +46,7 @@ The design that came out of that month split the work in two. The screening serv
 
 In June we took the design to a review committee, the first time the company had run one. The committee agreed with me: match on national ID only, exact match. One ID, one person, fewest false positives, least casework for my team. They also asked why we screened the customer but not the merchant, and I had the answer from April. And they told me the screening service had no authentication and lived in a different cluster, so I owed them an auth design too.
 
-**Foundation:** Two domains, one contract. They match, we decide. That split is why a regulator renaming its tiers in August cost us zero lines of code.
+**Foundation:** Two domains, one contract. They match, we decide.
 
 **Lesson:** Bring the outage question yourself. Write down what the payment does when the fraud check can't answer before you write down what it does when it can.
 
@@ -68,11 +68,11 @@ We built it dark. The integration sits behind three stacked switches: observe, e
 
 Last week our QA lead and I ran a real scan in production with a flagged test account and all three switches on. Scan one: a generic "cannot process payment". Scan two: the partner's account-locked screen, because our lock had fired on the first try and the second attempt never reached the fraud check. The partner on the call asked the obvious question. Can you give us a different message, so our support team knows this is a fraud hold and not a broken card?
 
-A reasonable ask. Also the whole problem in one sentence. A distinct message tells the user they matched a mule list. Tell them, and you've told the fraud ring which account is burned. Don't tell them, and a real person with a common name gets a dead card and a support agent who can't explain why. I told the partner I'd take it to compliance rather than say yes on a call.
+A reasonable ask, and the whole problem in one sentence. A distinct message tells the user they matched a mule list. Tell them, and you've told the fraud ring which account is burned. Don't tell them, and a real person with a common name gets a dead card and a support agent who can't explain why. I told the partner I'd take it to compliance rather than say yes on a call.
 
 **Foundation:** Ship behind layered switches. Observe first, enforce second, lock last, and each one only works if the one below it is on.
 
-**Lesson:** Test in production as the partner sees it, not as the log sees it. The log said one clean rejection. The customer would have seen two different screens, and nobody had designed the second one.
+**Lesson:** Test in production from the customer's screen. The log said one clean rejection. The customer would have seen two different screens, and nobody had designed the second one.
 
 ## 6. Go live (September onward)
 

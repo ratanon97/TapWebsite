@@ -4,36 +4,36 @@ slug: "omise-wallet-integration"
 date: "2025-11-14"
 project: "Omise"
 tags: ["fintech", "stakeholder-alignment", "integration", "compliance"]
-summary: "250K users, two partners, one regulator, and a three-week window — the story of holding the line when the API isn't the hard part."
-lesson: "How to keep a multi-party fintech integration on track when the real risk is stakeholder drift, not engineering."
-heroQuote: "The hardest part wasn't the API — it was the 3pm call on a Friday."
+summary: "250K users, two partners, one regulator, and a three-week window. The API worked. Keeping three organisations on the same page was the job."
+lesson: "Keeping a multi-party fintech integration on track when the partners and the regulator drift apart faster than the code does."
+heroQuote: "The hardest part wasn't the API. It was the 3pm call on a Friday."
 featured: true
 ---
 
 ## The situation
 
-We had signed two wallet partners into a program that would eventually serve 250,000+ users and generate roughly $420K in projected three-year revenue. On paper, it was an integration project. In practice, it was three organisations — us, the partners, and a regulator — moving at three different speeds, reading the same requirements three different ways.
+We had signed two wallet partners into a program that would eventually serve 250,000+ users, with roughly $420K in projected revenue over three years. On paper it was an integration project. In practice it was three organisations (us, the partners, and a regulator) moving at three different speeds and reading the same requirements three different ways.
 
-The engineering scope was well-understood: open-loop wallet, compliance checks, reconciliation. None of it was the part I lost sleep over.
+The engineering scope was clear: an open-loop wallet, compliance checks, reconciliation. I didn't lose any sleep over it.
 
 ## The tension
 
-Partner A was ready to ship. Partner B was still clarifying scope. The regulator was unmoved by either fact. And inside our own team, product and engineering disagreed on which surface area of the wallet counted as "MVP" — the kind of disagreement where both sides are technically right and the project dies while they're being right at each other.
+Partner A was ready to ship. Partner B was still clarifying scope. The regulator was unmoved by either fact. Inside our own team, product and engineering disagreed on which parts of the wallet counted as the MVP, the kind of disagreement where both sides are technically right and the project dies while they're being right at each other.
 
-The 3pm call on a Friday was the moment it almost came apart. Partner B wanted to push back launch by a month. Partner A, hearing this, wanted to launch without them. I had about twenty minutes to figure out whether that was a real option or a panic reaction dressed up as decisiveness.
+The 3pm call on a Friday was when it almost came apart. Partner B wanted to push launch back by a month. Partner A heard this and wanted to launch without them. I had about twenty minutes to work out whether that was a real option or a panic reaction dressed up as decisiveness.
 
 ## What I did
 
-**I stopped trying to align everyone on the answer and started aligning them on the question.** Before the call, I wrote a one-page document with three things on it: what the regulator had actually said (verbatim, not paraphrased), what launching without Partner B would mean for the revenue model, and what the minimum viable compliance envelope looked like. No recommendations. Just the shape of the decision.
+I stopped trying to get everyone to agree on the answer and tried to get them to agree on the question. Before the call I wrote a one-page document with three things on it: what the regulator had actually said, verbatim rather than paraphrased; what launching without Partner B would do to the revenue model; and what the minimum compliance envelope looked like. It had no recommendation in it, only the shape of the decision.
 
-**I ran the meeting against that document, not against opinions.** When Partner A pushed for a unilateral launch, I walked them through what the compliance envelope actually required — which was Partner B's data. The "launch without them" option quietly removed itself from the table without anyone having to lose face.
+I ran the meeting against that document instead of against opinions. When Partner A pushed for a unilateral launch, I walked them through what the compliance envelope required, which was Partner B's data. The launch-without-them option came off the table on its own, and nobody had to lose face.
 
-**I then did the harder thing and re-scoped with Partner B live, on the call.** Instead of a month's delay, we found four days of real blockers and three weeks of "we haven't looked at it yet." We pulled the blockers forward, parked the rest, and committed to a two-week slip instead of four.
+Then I re-scoped with Partner B live on the call, which was the harder part. A month's delay turned out to be four days of real blockers and three weeks of work nobody had looked at yet. We pulled the blockers forward, parked the rest, and committed to a two-week slip instead of four.
 
-**After the call, I sent a written recap the same afternoon.** Not minutes — a decision record. Who agreed to what, what's blocked on whom, and what the next checkpoint is. This is the unglamorous half of stakeholder alignment: the version that exists in writing is the version that actually happened.
+That afternoon I sent a written recap, and I wrote it as a decision record rather than minutes: who agreed to what, what was blocked on whom, and the date of the next checkpoint. This is the unglamorous half of stakeholder alignment. The version that exists in writing is the version that actually happened.
 
 ## What I learned
 
-Fintech integration problems look like engineering problems and solve like communication problems. The API was always going to work. The question was whether three organisations could stay on the same page for long enough for the API to matter — and the thing that kept them there wasn't consensus, it was a shared document of what the decision actually was.
+The API was always going to work. The question was whether three organisations could stay on the same page long enough for it to matter. They never reached consensus. What kept them in the room was a shared document that said what the decision was.
 
-The wallet shipped two weeks late. Nobody remembers the two weeks. They remember that it shipped.
+The wallet shipped two weeks late, and the two weeks are not the part anyone brings up now.
