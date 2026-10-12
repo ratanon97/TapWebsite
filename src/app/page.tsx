@@ -1,52 +1,51 @@
-import Nav from "@/components/Nav";
-import Hero from "@/components/Hero";
-import CurrentWork from "@/components/CurrentWork";
-import PreviousWork from "@/components/PreviousWork";
-import SignatureStories from "@/components/SignatureStories";
-import FieldNotes from "@/components/FieldNotes";
-import About from "@/components/About";
-import Tools from "@/components/Tools";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import MotionProvider from "@/components/MotionProvider";
-import ScrollProgress from "@/components/ScrollProgress";
-import { getAllStories, getFeaturedStories } from "@/lib/stories";
+import "./scrollcraft.css";
+import "./editorial.css";
+
+import RunningHead from "@/components/editorial/RunningHead";
+import Ledger from "@/components/editorial/Ledger";
+import LadderSync from "@/components/editorial/LadderSync";
+import ScrollCraftMount from "@/components/editorial/ScrollCraftMount";
+import {
+  ChapterFraud,
+  ChapterLedger,
+  ChapterPath,
+  ChapterRole,
+  ChapterWallet,
+  TitlePage,
+} from "@/components/editorial/chapters";
+import { getStoryBySlug } from "@/lib/stories";
+
+// Without JavaScript the engine never runs, so nothing it would reveal must
+// start hidden. The engine's own stylesheet hides cued and staggered content
+// until it mounts; this restores it.
+const NOSCRIPT_CSS = `
+  [data-sc-in], [data-sc-stagger] > *, [data-sc-cue] { opacity: 1 !important; transform: none !important; }
+  [data-sc-reveal] { clip-path: none !important; }
+  .ledger { display: none !important; }
+`;
 
 export default function Home() {
-  const featured = getFeaturedStories(3).map((s) => ({
-    slug: s.slug,
-    title: s.title,
-    project: s.project,
-    summary: s.summary,
-    lesson: s.lesson,
-    readingTime: s.readingTime,
-  }));
-
-  const latest = getAllStories()
-    .slice(0, 5)
-    .map((s) => ({
-      slug: s.slug,
-      title: s.title,
-      date: s.date,
-      project: s.project,
-      readingTime: s.readingTime,
-    }));
+  const wallet = getStoryBySlug("omise-wallet-integration");
+  const fraud = getStoryBySlug("wallet-blackwatch-integration");
 
   return (
-    <MotionProvider>
-      <ScrollProgress />
-      <Nav />
-      <main>
-        <Hero />
-        <CurrentWork />
-        <PreviousWork />
-        <SignatureStories stories={featured} />
-        <FieldNotes notes={latest} />
-        <About />
-        <Tools />
-        <Contact />
+    <div id="sc-root" className="editorial">
+      <noscript>
+        <style>{NOSCRIPT_CSS}</style>
+      </noscript>
+      <div className="sc-grain" aria-hidden="true" />
+      <RunningHead />
+      <Ledger />
+      <main id="top">
+        <TitlePage />
+        <ChapterWallet readingTime={wallet?.readingTime ?? "5 min read"} />
+        <ChapterFraud readingTime={fraud?.readingTime ?? "9 min read"} />
+        <ChapterRole />
+        <ChapterPath />
+        <ChapterLedger />
       </main>
-      <Footer />
-    </MotionProvider>
+      <LadderSync />
+      <ScrollCraftMount />
+    </div>
   );
 }

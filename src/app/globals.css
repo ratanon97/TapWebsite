@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter), "Inter", sans-serif;
+  --font-sans: var(--font-geist), "Geist", system-ui, sans-serif;
   --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
   --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
 }
 
 :root {
-  --color-bg: #FAFAFA;
-  --color-fg: #1A1A1A;
-  --color-muted: #6B7280;
-  --color-accent: #2C2C2C;
-  --color-accent-warm: #D97706;
-  --color-accent-warm-glow: #F59E0B;
-  --color-highlight: #FDE68A;
-  --color-card: #FFFFFF;
-  --color-surface: #F3F4F6;
-  --color-surface-deep: #EAEAEC;
+  --color-bg: #F4F2EC;
+  --color-fg: #1C1A16;
+  --color-muted: #5F5A50;
+  --color-accent: #2A2621;
+  --color-accent-warm: #B2500A;
+  --color-accent-warm-glow: #D9741F;
+  --color-highlight: #F3DFA6;
+  --color-card: #FBFAF7;
+  --color-surface: #EBE8E1;
+  --color-surface-deep: #E2DED5;
   --color-border: rgba(0, 0, 0, 0.08);
   --color-ring: rgba(0, 0, 0, 0.06);
   /* Gradient text stops for hero */
@@ -26,16 +26,16 @@
 }
 
 .dark {
-  --color-bg: #0A0A0E;
-  --color-fg: #E8E4DE;
-  --color-muted: #A8A29E;
+  --color-bg: #0F0F12;
+  --color-fg: #ECE8E0;
+  --color-muted: #A6A197;
   --color-accent: #D6D3CD;
-  --color-accent-warm: #FBBF24;
-  --color-accent-warm-glow: #FCD34D;
-  --color-highlight: #92400e;
-  --color-card: #14141A;
-  --color-surface: #111116;
-  --color-surface-deep: #070709;
+  --color-accent-warm: #F2B544;
+  --color-accent-warm-glow: #F7C96A;
+  --color-highlight: #7A3E0C;
+  --color-card: #1B1B21;
+  --color-surface: #17171C;
+  --color-surface-deep: #0A0A0D;
   --color-border: rgba(255, 255, 255, 0.08);
   --color-ring: rgba(255, 255, 255, 0.12);
   /* Gradient text stops — white → lavender → pale pink (Huly signature) */
